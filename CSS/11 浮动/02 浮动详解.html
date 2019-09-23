@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div:first-child {
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+			float: left; /*默认左侧浮动:添加浮动之后就会浮在标准流的上面*/
+		}
+		div:last-child {
+			width: 140px;
+			height: 300px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<!-- 如果2个盒子都不加浮动，就是标准流  块级元素自上而下显示 -->
+</body>
+</html>

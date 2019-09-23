@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*类选择器、伪类选择器就是选取对象*/
+		/*伪元素选择器本质上是插入一个元素，只不过是行内元素*/
+		div::before {
+			content: "楚乔";
+			background-color: pink;
+			border: 1px solid red;
+			display: block;
+			width: 100px;
+			height: 100px;
+		}
+		div::after {
+			content: "宇文玥的";
+			display: block;
+			height: 100px;
+			width: 100px;
+			border: 1px solid green;
+		}
+	</style>
+</head>
+<body>
+	<div>是</div>
+</body>
+</html>

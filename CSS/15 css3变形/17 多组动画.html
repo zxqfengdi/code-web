@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			/*动画语法格式:animation:动画名称 动画时间 速度曲线 延时时间 播放次数 是否逆向播放（下一周期） 动画是否运行或者暂停 动画时间之外的状态*/
+			/*动画名称是自定义的，此处为引用动画*/
+			/*animation: go 2s ease 0s infinite alternate;*/
+			animation: go 4s infinite;
+		}
+		/*定义动画： @keyframes g动画名称 {} */
+		/*多组动画可使用百分比表示：相当于from...to....*/
+		@keyframes go {
+			0% {
+				transform: translate3d(0, 0, 0);
+			}
+			25% {
+				transform: translate3d(800px, 0, 0);
+			}
+			50% {
+				transform: translate3d(800px, 400px, 0);
+			}
+			75% {
+				transform: translate3d(0, 400px, 0);
+			}
+			100% {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	</style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+		}
+		body {
+			/*最小宽度，缩小到最小宽度不再缩小*/
+			min-width: 300px;
+			max-width: 540px;
+			margin: 0 auto;
+		}
+		header {
+			/*继承父元素body的宽度*/
+			width: 100%;
+			height: 100px;
+		}
+		header img {
+			/*继承父元素header的宽度*/
+			width: 100%;
+			height: 100%;
+		}
+		nav {
+			padding: 5px;
+		}
+		.row {
+			height: 90px;
+			width: 100%;
+			background-color: #ff697a;
+			/*指定为伸缩布局*/
+			border-radius: 8px;
+			display: flex;
+			margin-bottom: 4px;
+		}
+		nav .row:nth-child(2) {
+			background-color: #3d98ff;
+		}
+		nav .row:nth-child(3) {
+			background-color: #44c522;
+		}
+		nav .row:nth-child(4) {
+			background-color: #fc9720;
+		}
+		.row3 {
+			/*row3子元素各占一份*/
+			flex: 1;
+			border-left: 1px solid #fff;
+		}
+		.row3:first-child {
+			border: 0;
+		}
+		.hotel {
+			/*声明伸缩布局*/
+			display: flex;
+			flex-direction: column;
+		}
+		.hotel a {
+			flex: 1;
+			text-align: center;
+			font-size: 16px;
+			color: #fff;
+			line-height: 45px;
+			text-decoration: none;
+			font-weight: lighter;
+			/*设置文字阴影*/
+			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+		}
+		.hotel a:first-child {
+			border-bottom: 1px solid #fff;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<img src="images/ctrip.jpg" alt="">
+	</header>
+	<nav>
+		<div class="row">
+			<div class="row3">酒店</div>
+			<div class="row3 hotel">
+				<a href="#">海外酒店</a>
+				<a href="#">特价酒店</a>
+			</div>
+			<div class="row3 hotel">
+				<a href="#">团购</a>
+				<a href="#">民宿-客栈</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="row3">机票</div>
+			<div class="row3 hotel">
+				<a href="#">火车票-抢票</a>
+				<a href="#">特价机票</a>
+			</div>
+			<div class="row3 hotel">
+				<a href="#">汽车票-船票</a>
+				<a href="#">专车-租车</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="row3">旅游</div>
+			<div class="row3 hotel">
+				<a href="#">目的地攻略</a>
+				<a href="#">周边游</a>
+			</div>
+			<div class="row3 hotel">
+				<a href="#">邮轮旅行</a>
+				<a href="#">定制旅行</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="row3 hotel">
+				<a href="#">景点-玩乐</a>
+				<a href="#">礼品卡</a>
+			</div>
+			<div class="row3 hotel">
+				<a href="#">美食林</a>
+				<a href="#">WiFi-电话卡</a>
+			</div>
+			<div class="row3 hotel">
+				<a href="#">购物-外汇</a>
+				<a href="#">保险-签证</a>
+			</div>
+		</div>
+	</nav>
+</body>
+</html>

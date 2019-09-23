@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			/*清除默认的内外边距*/
+			margin: 0;
+			padding: 0;
+		}
+		.searchPic {
+			width: 238px;
+			height: 294px;
+			border: 1px solid #D9E0EE;
+			border-top: 3px solid #FF8400;/* 样式冲突：就近原则*/
+			margin: 100px;
+
+		}
+		h3 {
+			height: 35px;
+			border-bottom: 1px solid #D9E0EE;
+			font-size: 16px;
+			font-weight: normal;/*让粗体不变粗*/
+			line-height: 35px; /*垂直居中*/
+			/*文字位置移动：h3盒子角度--使用外边距margin移动整个盒子(会导致下边框同时移动)；--使用内边距padding设置(移动内部文字)*/
+			padding-left: 12px; /*h3盒子没给宽度继承父亲宽度---padding不影响盒子宽度（未给宽高或者继承父亲高度）*/
+		}
+	</style>
+</head>
+<body>
+	 <div class="searchPic">
+     	<h3>搜索趣图</h3>
+     </div>
+</body>
+</html>

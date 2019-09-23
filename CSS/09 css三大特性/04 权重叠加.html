@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>权重叠加</title>
+	<style>
+		li { /*0,0,0,1*/
+			color: red;
+		}
+		ul li { /*权重叠加：0,0,0,2*/
+			color: green;
+		}
+		nav ul li { /*0,0,0,3*/
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	 <nav class="daohang">
+    	<ul>
+    		<li>李白</li>
+    		<li>程咬金</li>
+    		<li>鲁班1号</li>
+    	</ul>
+    </nav>
+</body>
+</html>

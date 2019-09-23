@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 296px;
+			height: 180px;
+			margin: 100px auto;
+			/*子绝父相，使插入的元素以父元素定位*/
+			position: relative;
+		}
+		/*鼠标经过之后插入一个伪元素*/
+		div:hover::before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			border: 5px solid red;
+			/*伪元素默认为行内元素，需转换显示模式*/
+			/*display: block;*/
+			/*使用绝对定位使其浮动。不占位置*/
+			position: absolute;
+			top: 0;
+			left: 0;
+			/*css3盒子模型：宽度包括边框*/
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="images/mi.jpg" alt="">
+	</div>
+</body>
+</html>

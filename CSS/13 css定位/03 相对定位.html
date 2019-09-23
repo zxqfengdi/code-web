@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+		div:nth-child(2) {
+			background-color: purple;
+			/*
+			相对定位: 1. 相对于自己原来的位置以左上角为基准点通过偏移量移动位置
+			2. 通过偏移量移动位置后，原来的位置继续占有（相对定位不脱表）
+			*/
+			position: relative;
+			left: 100px;
+			top: 110px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div>2</div>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			line-height: 100px;
+			text-align: center;
+			margin: 100px auto;
+			position: relative;
+		}
+		img {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 0;
+			left: 100px;
+			/*隐藏二维码*/
+			display: none;
+		}
+		/*鼠标经过div盒子时，图片显示出来*/
+		div:hover img {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div>扫二维码
+		<img src="images/erweima.png" alt="">
+	</div>
+</body>
+</html>

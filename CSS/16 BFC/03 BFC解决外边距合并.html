@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+		.father {
+			width: 400px;
+			height: 500px;
+			border: 1px solid red;
+		}
+		.son1,
+		.son2 {
+			width: 100px;
+			height: 100px;
+		}
+		/* 此时son1 son2处于同一bfc，会发生外边距合并问题 */
+		/* 解决方法：将其中一个重新创建一个bfc区域即可 */
+		.over {
+			overflow: hidden;
+		}
+		.son1 {
+			background-color: pink;
+			margin-bottom: 50px;
+		}
+		.son2 {
+			background-color: deeppink;
+			margin-top: 100px;
+		}
+    </style>
+</head>
+<body>
+<div class="father">
+	<div class="over">
+		<div class="son1"></div>
+	</div>
+	<div class="son2"></div>
+</div>
+</body>
+</html>

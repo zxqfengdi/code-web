@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			/*translate:（x, y）:水平及垂直移动，可同时移动*/
+			/*水平移动*/
+			/*transform: translate(100px);*/
+			/*百分比移动：以自己为准*/
+			/*transform: translate(50%);*/
+
+			/*之前定位的盒子水平垂直居中对齐方法：先走父元素的50%,再走自己的一半负外边距*/
+			/*position: absolute;*/
+			/*left: 50%;*/
+			/*margin-left: -50px;*/
+			/*top: 50%;*/
+			/*margin-top: -50px;*/
+
+			/*学习移动后的定位盒子水平垂直居中*/
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			/*水平垂直移动自己的一半*/
+			transform: translate(-50%, -50%);
+		}
+
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

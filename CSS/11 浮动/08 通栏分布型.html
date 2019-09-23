@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+		}
+		.top {
+			/*铜通栏盒子不用写宽度*/
+			height: 80px;
+			border: 1px dashed #aaa;
+			background-color: #ccc;
+			text-align: center;
+		}
+		.banner {
+			width: 960px;
+			height: 150px;
+			border: 1px dashed #aaa;
+			background-color: #ccc;
+			margin: 10px auto;
+			text-align: center;
+		}
+		.main {
+			width: 960px;
+			height: 150px;
+			margin: 0 auto;
+			margin-bottom: 10px;
+		}
+		.main ul li {
+			width: 230px;
+			height: 150px;
+			border: 1px dashed #aaa;
+			background-color: #ccc;
+			text-align: center;
+			float: left;
+			margin-left: 10px;
+		}
+		.main .no-margin {
+			margin-left: 0;
+		}
+		.footer {
+			height: 100px;
+			border: 1px dashed #aaa;
+			text-align: center;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="top">top</div>
+	<div class="banner">banner</div>
+	<div class="main">
+		<ul>
+			<li class="no-margin">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	<div class="main">
+		<ul>
+			<li class="no-margin">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	<div class="footer">footer</div>
+</body>
+</html>

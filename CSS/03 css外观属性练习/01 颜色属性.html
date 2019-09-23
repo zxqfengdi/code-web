@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css外观属性</title>
+	<style>
+		/*color:文本颜色属性*/
+		/* 类选择器：预定义颜色值*/
+		.red {
+			color: red;
+		}
+		/*十六进制表示颜色:尽量简写*/
+		.color0f0 {
+			color: #72c172;
+		}
+		/*结构选择器:使用rgb颜色值表示*/
+		li:last-child {
+			color: rgb(0,0,255);
+		}
+	</style>
+</head>
+<body>
+	<h3> color属性用于定义文本的颜色，其取值方式有如下3种：</h3>
+    <ol> 
+    	<li class="red">预定义的颜色值，如red，green，blue等。</li>
+    	<li class="color0f0">※※※※※十六进制，如#FF0000，#FF6600，#29D794等。十六进制是最常用的定义颜色的方式</li>
+    	<li>RGB代码，如红色可以表示为rgb(255,0,0)或rgb(100%,0%,0%)。</li>
+    </ol>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签显示模式转换</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			display: inline;
+		}
+		span {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			display: block;
+		}
+		a {
+			width: 100px;
+			height: 100px;
+			background-color: deeppink;
+			display: inline-block;;
+		}
+	</style>
+</head>
+<body>
+	<hr>
+	<!-- 块转行内 -->
+	<div>123</div>
+	<div>456</div>
+	<div>789</div>
+	<hr>
+	<!-- 行内转块 -->
+	<span>abc</span>
+	<span>def</span>
+	<span>hjk</span>
+	<!-- 行内元素转行内块 -->
+	<a href="#">123</a>
+	<a href="#">456</a>
+	<hr>
+</body>
+</html>

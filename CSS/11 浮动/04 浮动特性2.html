@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		section {
+			width: 800px;
+			height: 500px;
+			background-color: pink;
+		}
+		section div:first-child {
+			width: 200px;
+			height: 200px;
+			background-color: purple;
+			/*float: left;*/
+		}
+		section div:last-child {
+			width: 249px;
+			height: 300px;
+			background-color: skyblue;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<section>
+    	<div>熊大</div>
+    	<div>熊二</div>
+    	<!-- 不添加浮动为标准流，自上而下显示 -->
+    	<!-- 如果上一个两个元素均浮动，则两个元素顶部对齐；-->
+    	<!-- 若第一个元素不浮动（标准流），第二个元素浮动，则第二个元素和第一个元素底部对齐（类似于标准流布局）  -->
+    	<!-- 需注意：若多个元素中有一个元素浮动，其余盒子都浮动才能在同一行 -->
+    </section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box1 {
+			border: 1px solid red;
+			/*多数情况下，不方便给父元素高度----一般情况下，让里面的内容自动撑开盒子，不写死高度*/
+		}
+		.son1 {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			float: left;
+		}
+		.son2 {
+			width: 150px;
+			height: 100px;
+			background-color: purple;
+			float: left;
+		}
+		.box2 {
+			width: 300px;
+			height: 100px;
+			background-color: #000;
+		}
+		.clearfix:before, .clearfix:after {
+			content: "";
+			display: table;
+		}
+		.clearfix:after {
+			clear: both;
+		}
+		.clearfix:after {
+			*zoom: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1 clearfix">
+		<div class="son1"></div>
+		<div class="son2"></div>
+	</div>
+	<div class="box2"></div>
+</body>
+</html>

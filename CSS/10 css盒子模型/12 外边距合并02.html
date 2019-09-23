@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外边距合并</title>
+	<style>
+		div.father {
+			width: 300px;
+			height: 300px;
+			background-color: pink;
+			/*解决外边距合并问题*/
+			/*border: 1px solid blue;*/
+			/*padding-top: 1px;*/
+			/*overflow: hidden;*/
+		}
+		div.son {
+			width: 200px;
+			height: 200px;
+			background-color: purple;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+    	<div class="son"></div>
+    </div>
+</body>
+</html>

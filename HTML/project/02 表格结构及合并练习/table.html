@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格练习</title>
+</head>
+<body>
+	<!-- 表格 -->
+	<table border="1" cellspacing="0" cellpadding="5" width="500" height="200" align="center">
+		<!-- 表格标题 -->
+		<caption>编程语言学习表</caption>
+		<!-- 表格头部结构 -->
+		<thead>
+			<!-- 表头 -->
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>语言</th>
+			</tr>
+		</thead>
+		<!-- 表格主体结构 -->
+		<tbody>
+			<tr>
+				<td>01</td>
+				<td>小王</td>
+				<!-- 跨行合并单元格 -->
+				<td rowspan="3">Python</td>
+			</tr>
+			<tr>
+				<td>02</td>
+				<td>小李</td>
+			</tr>
+			<tr>
+				<td>03</td>
+				<td>小美</td>
+
+			</tr>
+			<tr>
+				<td>04</td>
+				<!-- 跨列合并单元格 -->
+				<td colspan="2">小马</td>
+			</tr>
+		</tbody>
+
+	</table>
+</body>
+</html>

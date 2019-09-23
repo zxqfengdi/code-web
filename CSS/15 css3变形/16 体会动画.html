@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			/*动画语法格式:animation:动画名称 动画时间 速度曲线 延时时间 播放次数 是否逆向播放（下一周期） 动画是否运行或者暂停 动画时间之外的状态*/
+			/*动画名称是自定义的，此处为引用动画*/
+			animation: go 2s ease 0s infinite alternate;
+		}
+		/*定义动画*/
+		@keyframes go {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(500px);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.father {
+			width: 300px;
+			height: 300px;
+			background-color: pink;
+			margin: 100px;
+		}
+		.son {
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+			/*父元素没有定位，以浏览器为准对齐（document文档）*/
+			position: absolute;
+			top: 15px;
+			left: 15px;
+		}
+		/*绝对定位后脱标不占有位置，下面元素会向上移动*/
+		.son2 {
+			width: 100px;
+			height: 100px;
+			background-color: deeppink;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+		<div class="son2"></div>
+	</div>
+</body>
+</html>

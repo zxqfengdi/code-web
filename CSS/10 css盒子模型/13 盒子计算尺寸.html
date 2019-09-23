@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒子计算尺寸</title>
+	<style>
+		div {
+			/*外盒尺寸（空间尺寸）：宽度=width + padding*2 + border*2 + margin*2 */
+			/*外盒尺寸（空间尺寸）：高度=height + padding*2 + border*2 + margin*2 */
+			/*内盒尺寸（实际尺寸）：宽度=width + padding*2 + border*2*/
+			/*内盒尺寸（实际尺寸）：高=height + padding*2 + border*2*/
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			padding: 5px;
+			border: 5px solid red;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div>hello</div>
+    <div></div>
+</body>
+</html>

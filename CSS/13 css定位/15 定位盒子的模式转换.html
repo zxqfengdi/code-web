@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			height: 100px;
+			background-color: pink;
+			/* 没给宽度的盒子，浮动会有模式转换的问题，转换为行内块 */
+			/*float: left;*/
+			/* 盒子设定绝对定位或者固定定位后会转换模式，行内块模式 */
+			/*position: absolute;*/
+			/*position: fixed;*/
+			top: 0;
+			left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div>稳住，定位不难，我们能赢！</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		/*css初始化*/
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+		}
+		.clearfix::before,
+		.clearfix::after {
+			display: table;
+			content: "";
+		}
+		.clearfix::after {
+			clear: both;
+		}
+		.clearfix {
+			*zoom: 1;
+		}
+
+		header {
+			width: 100%;
+			height: 90px;
+			background-color: pink;
+			/*使用overflow触发BFC解决外边距合并问题*/
+			overflow: hidden;
+		}
+		nav {
+			width: 80%;
+			height: 40px;
+			background-color: purple;
+			/*父元素会与子元素外边距发生合并*/
+			margin: 26px auto;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav></nav>
+	</header>
+</body>
+</html>

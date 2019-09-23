@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.father {
+			width: 500px;
+			height: 600px;
+			border: 1px solid red;
+			margin: 0 auto;
+		}
+		.box {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			float: left;
+		}
+		.txt {
+			height: 300px;
+			background-color: purple;
+			/* 给txt元素创建Bfc区域,此时bfc区域不会与浮动盒子产生交集,会贴着浮动盒子边缘，可以实现自适应效果 */
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+<div class="father">
+	<div class="box"></div>
+	<div class="txt">
+		我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子
+		我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子
+		我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子
+		我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子我可以制作右侧自适应的盒子
+	</div>
+</div>
+</body>
+</html>

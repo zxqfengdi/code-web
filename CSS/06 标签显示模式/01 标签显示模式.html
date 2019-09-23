@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签显示模式</title>
+	<style>
+		div {
+			width: 300px;
+			height: 100px;
+			background-color: pink;
+		}
+		p {
+			width: 300px;
+			height: 100px;
+			background-color: blue;
+		}
+
+	</style>
+</head>
+<body>
+	<hr>
+	<!-- 块级元素：块级元素往往单独占据一行，宽高属性、填充、边距等都可以单独设置 -->
+	<!-- 默认宽度为100% 块级元素内部可容纳其他块级元素及内联元素 -->
+	<h1>块级元素</h1>
+	<h6>块级元素</h6>
+	<p>块级元素</p>
+	<div>块级元素</div>
+	<ol>
+		<li>块级元素</li>
+		<li>块级元素</li>
+	</ol>
+	<ul>
+		<li>块级元素</li>
+		<li>块级元素</li>
+		<li>h标题标签、p段落标签都是文字类块级元素，内部不能有其他块级元素</li>
+	</ul>
+	<hr>
+	<!-- 内联元素即行内元素：和相邻元素在同一行；不能设置宽高属性；默认宽度就是自身宽度 -->
+	<!-- 行内元素内部只能容纳文本或行内元素 -->
+	 <a href="#">行内元素</a>
+	 <span>行内元素</span>
+	 <hr>
+	 <!-- 行内块元素：可以设置宽高和对齐属性，但是和相邻元素又在同一行（之间有空白空隙） -->
+	 用户名：<input type="text">
+	 密码：<input type="password">
+	 
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css层叠性</title>
+	<style type="text/css">
+		div {
+			color: red;
+		}
+		div {
+			color: blue;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	 <div> 王可可 是一条狗 </div>  
+    1. 样式冲突，遵循的原则是就近原则。 那个样式离着结构近，就执行那个样式。
+    2. 样式不冲突，不会层叠
+</body>
+</html>

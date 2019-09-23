@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 222px;
+			height: 220px;
+			background-color: pink;
+		}
+		/*图片或者表单元素（行内块）默认与父级元素基线对齐，会导致下面出现一条缝隙*/
+		img {
+			/*解决方法1：转换行内块元素为块级元素即可*/
+			display: block;
+			/*解决方法2：设置行内块元素垂直对齐方式为底线对齐*/
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<img src="images/3.jpg" alt="">
+</div>
+</body>
+</html>

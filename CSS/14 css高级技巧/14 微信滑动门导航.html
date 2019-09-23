@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+		}
+		body {
+			background: url(images/wx.jpg) repeat-x;
+		}
+		.nav {
+			height: 75px;
+		}
+		.nav li {
+			float: left;
+			margin: 0 10px;
+			padding-top: 21px;
+		}
+		.nav li a {
+			display: block;
+			line-height: 33px;
+			font-size: 16px;
+			color: #fff;
+			background: url(images/to.png) no-repeat left;
+			padding-left: 15px;
+			text-decoration: none;
+		}
+		.nav li a span {
+			display: block;
+			line-height: 33px;
+			background: url(images/to.png) no-repeat right;
+			padding-right: 15px;
+		}
+		/*设置鼠标移动时背景为凹下去*/
+		.nav li a:hover {
+			background-image: url(images/ao.png);
+		}
+		.nav li a:hover span {
+			background-image: url(images/ao.png);
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<div class="nav">
+			<ul>
+				<li>
+					<a href="#"><span>首页</span></a>
+				</li>
+				<li>
+					<a href="#"><span>帮助与反馈</span></a>
+				</li>
+				<li>
+					<a href="#"><span>公众平台</span></a>
+				</li>
+			</ul>
+		</div>
+	</header>
+</body>
+</html>

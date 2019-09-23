@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>padding不影响盒子尺寸</title>
+	<!-- padding不影响盒子尺寸：盒子未给宽高或者继承父亲宽高 -->
+	<style>
+		div {
+			height: 30px;
+			border: 1px solid red;
+			padding-left: 20px;
+			padding-top: 10px;
+			background-color: pink;
+		}
+		nav {
+			width: 300px;
+			height: 40px;
+			border: 1px solid red;
+		}
+		p {
+			padding-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div>奔跑吧，兄弟</div>
+	<nav>
+		<p>摔跤吧，爸爸</p>
+	</nav>
+</body>
+</html>

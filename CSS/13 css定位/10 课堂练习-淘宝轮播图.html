@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+		}
+		.slider {
+			width: 520px;
+			height: 280px;
+			margin: 50px auto;
+			position: relative;
+		}
+		.left,
+		.right {
+			position: absolute;
+			display: block;
+			width: 24px;
+			height: 36px;
+			top: 50%;
+			margin-top: -18px;
+		}
+		.left {
+			left: 0;
+		}
+		.right {
+			right: 0;
+		}
+		.circle {
+			width: 70px;
+			height: 14px;
+			background-color: rgba(255, 255, 255, 0.2);
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			margin-left: -35px;
+			border-radius: 7px;
+		}
+		.circle li {
+			width: 10px;
+			height: 10px;
+			background-color: #b7b7b7;
+			float: left;
+			border-radius: 50%;
+			margin: 2px;
+		}
+		/*注意选择器权重问题*/
+		li.current {
+			background-color: #f40;
+		}
+	</style>
+</head>
+<body>
+	<div class="slider">
+		<img src="images/taobao.jpg" alt="">
+		<a href="#" class="left"><img src="images/left.png" alt=""></a>
+		<a href="#" class="right"><img src="images/right.png" alt=""></a>
+		<ul class="circle">
+			<li class="current"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html

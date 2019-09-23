@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		section {
+			/*宽度指定百分比(父元素的80%)可简单实现响应式*/
+			width: 80%;
+			height: 200px;
+			border: 1px solid red;
+			margin: 50px auto;
+		}
+		section div {
+			width: 33.33%;
+			height: 100%;
+			background-color: pink;
+			float: left;
+		}
+		section div:nth-child(2) {
+			background-color: purple;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<div></div>
+		<div></div>
+		<div></div>
+	</section>
+</body>
+</html>

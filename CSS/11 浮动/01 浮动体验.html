@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+			/*转换为行内块元素可将块级元素一行排列（缺点：块级元素之间有空隙，不方便处理）*/
+			display: inline-block;
+			/*float: left; 浮动设置*/
+		}
+		div:nth-child(2) {
+			background-color: hotpink;
+		}
+		div:last-child {
+			background-color: deeppink;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

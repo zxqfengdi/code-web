@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box1 {
+			border: 1px solid red;
+			/*多数情况下，不方便给父元素高度----一般情况下，让里面的内容自动撑开盒子，不写死高度*/
+		}
+		.son1 {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			float: left;
+		}
+		.son2 {
+			width: 150px;
+			height: 100px;
+			background-color: purple;
+			float: left;
+		}
+		.box2 {
+			width: 300px;
+			height: 100px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<div class="son1"></div>
+		<div class="son2"></div>
+		<!-- 在浮动盒子的后面添加一个空盒子:设置清除浮动 -->
+		<div class="clear" style="clear: both;"></div>
+	</div>
+
+	<div class="box2"></div>
+</body>
+</html>

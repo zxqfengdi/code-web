@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h3>html5新语义标签</h3>
+	<!-- 页面头部 -->
+	<header>这是页面头部</header>
+	<!-- 导航栏 -->
+	<nav>这是导航栏</nav>
+	<!-- 页面底部：页脚 -->
+	<footer>这是页脚</footer>
+	<!-- 文章 -->
+	<article>定义文章</article>
+	<!-- 侧边 -->
+	<aside>定义侧边</aside>
+	<!-- 文本输入框可选值 -->
+	<input type="text" value="输入明星" list="star" name="明星"/>
+	<datalist id="star">
+		<option value="">刘德华</option>
+		<option value="">刘华强</option>
+		<option value="">郭富城</option>
+		<option value="">张学友</option>
+		<option value="">刘亦菲</option>
+	</datalist>
+	<!-- 元素分组 -->
+	<fieldset>
+		<legend>用户登录</legend>
+		用户名：<input type="text"> <br>
+		密码：<input type="password">
+	</fieldset>
+
+	<hr>
+	<h3>html5表单控件类型</h3>
+	<form action="" name="hello">
+		邮箱：<input type="email"> <br>
+		电话：<input type="tel"> <br>
+		数字：<input type="numbre"> <br>
+		url：<input type="url"> <br>
+		搜索：<input type="search"> <br>
+		区域：<input type="range"> <br>
+		时间：<input type="time"> <br>
+		年月日：<input type="date"> <br>
+		月份：<input type="month"> <br>
+		星期：<input type="week"> <br>
+		颜色：<input type="color"> <br>
+		<input type="submit">
+	</form>
+	<hr>
+	<h3>新增标签属性</h3>
+	<form action="" name="test">
+		<!-- placeholder 占位符	 -->
+		搜索：<input type="text" placeholder="豆腐一块两块"> <br>
+		<!-- autofocus 页面刷新自动获取输入焦点 -->
+		焦点：<input type="text" autofocus="autofocus"> <br>
+		<!-- multiple 多文件上传 -->
+		文件：<input type="file"> <br>
+		文件：<input type="file" multiple="mutiple"> <br>
+		<!-- autocomplete 自动完成功能：表单要有名字、需要有提交按钮 -->
+		自动完成：<input type="text" autocomplete="on"> <br>
+		<!-- required 必填项，内容不为空	 -->
+		内容非空：<input type="text"> <br>
+
+		<input type="submit" value="提交">
+
+	</form>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 200px;
+			height: 100px;
+			background-color: purple;
+			/*position: static;*/
+		}
+		div:first-child {
+			position: relative;
+			left: 40px;
+		}
+		div:last-child {
+			background-color: pink;
+			position: relative;
+			left: 20px;
+		}
+	</style>
+</head>
+<body>
+<div></div>
+<div></div>
+<p>
+	总结：<br>
+	静态定位：占有位置，不脱标。边偏移量无用<br>
+	相对定位：占有位置，不脱标。边偏移量有用，相对于自己原来的位置为准进行移动。<br>
+	绝对定位：完全脱标，不占有位置。父元素有定位相对于父元素，父元素无定义相对于浏览器窗口。<br>
+	固定定位：完全脱标，不占有位置。相对于浏览器窗口，拖动滚动条不动。
+</p>
+</body>
+</html>

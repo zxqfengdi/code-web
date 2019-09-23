@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件</title>
+</head>
+<body>
+	<h2>表单控件使用</h2>
+	<hr />
+	<h3>按钮组</h3>
+	<!-- 文本输入框 text value默认值-->
+	用户名： <input type="text" value="玉溪"> <br />
+	<!-- 密码输入框 -->
+	密&nbsp;码： <input type="password" maxlength="6"> <br />
+	<!-- 单选按钮 name：通过相同name值来确定一组控件-->
+	性&nbsp;别：<input type="radio" name="sex" checked="checked"> 女 <input type="radio" name="sex"> 男 <br />
+	<!-- 复选框 -->
+	爱&nbsp;好：<input type="checkbox" name="hobby"> 篮球 <input type="checkbox" name="hobby"> 足球 <input type="checkbox" name="hobby"> 乒乓球
+
+	<br />
+	<!-- 普通按钮 -->
+	搜索：<input type="button" value="搜索"> <br />
+	<!-- 提交按钮 -->
+	<input type="submit" value="提交表单"> 
+	<!-- 重置按钮 -->
+	<input type="reset" value="重置表单"> <br />
+	<!-- 图像按钮 -->
+	<input type="image" src="im.jpg"> <br />
+	<!-- 文件按钮-->
+	上传图像：<input type="file"> <br />	
+	<hr />
+	<h3>label标签的使用</h3>
+	<label>账户：<input type="text"> </label> <br />
+	密码：<input type="password"> <br />
+	<label  for="test">
+		用户名：<input type="text"> <input type="text" id="test">
+	</label>
+	<hr />
+	<h3>文本域使用</h3>
+	留言板：<textarea>请输入留言：</textarea>
+	<hr />
+	<h3>下拉菜单</h3>
+	<select name="" id="">
+		<option value="">点击选择你的籍贯</option>
+		<option value="" selected="selected">河南省</option>
+		<option value="">河北省</option>
+		<option value="">浙江省</option>
+		<option value="">台湾省</option>
+	</select>
+
+	<select name="" id="">
+		<option value="">点击选择你的城市</option>
+		<option value="">南阳市</option>
+		<option value="">郑州市</option>
+		<option value="">安阳市</option>
+		<option value="">洛阳市</option>
+	</select>
+	<hr />
+	<h3>表单域使用</h3>
+	<form action="demo.php" method="post">
+		<p>用户名：<input type="text" name="username"></p>
+		<p>密码：<input type="password" name="passwd"></p>
+		<input type="submit">
+		<input type="reset">
+
+	</form>
+</body>
+</html>

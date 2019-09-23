@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css优先级</title>
+	<style>
+		div { /*标签选择器（0,0,0,1）*/
+			color: pink;
+		}
+		.king { /*类、伪类选择器 （0,0,1,0）*/
+			color: blue;
+		}
+		:first-child { /*类、伪类选择器 （0,0,1,0）*/
+			color: green;
+		}
+		#wang { id选择器 （0,1,0,0）
+			color: purple;
+		}
+		div { /*!important (无穷大)*/
+			color: orange!important
+		}
+	</style>
+</head>
+<body>
+	 <div class="king" id="wang" style="color: black;"> 王者农药 </div> <!-- 行内样式 (1,0,0,0) -->
+</body>
+</html>
