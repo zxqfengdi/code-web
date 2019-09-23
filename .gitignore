@@ -1,0 +1,10 @@
+*.DS_Store
+*.jpg
+*.jpeg
+*.gif
+*.png
+*.svg
+*.psd
+*idea/
+*.vscode
+*images/
