@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body {
+				min-width: 650px;
+			}
+			.container {
+				/* 清除浮动 */
+				overflow: hidden;
+				padding-left: 100px;
+				padding-right: 200px;
+			}
+			.center {
+				/* 实现自适应将宽度设置为100% */
+				width: 100%;
+				height: 150px;
+				background-color: skyblue;
+			}
+			.left {
+				width: 100px;
+				height: 150px;
+				background-color: pink;
+				/* .left向左走父元素的-100%即可到达.center左边 */
+				margin-left: -100%;
+				position: relative;
+				left: -100px;
+			}
+			.right {
+				width: 200px;
+				height: 150px;
+				background-color: mediumpurple;
+				/* .left使用margin负值移动到.center之前后,.right会占据.left原有
+				位置,使其左外边距移动自己宽度的负值即可到达.center的右边 */
+				margin-left: -200px;
+				position: relative;
+				right: -200px;
+			}
+			/* 由于.center宽度为100%,添加浮动后.left,.right会被挤下来 */
+			/* 让.left,.right上去可使用margin的负值 */
+			/* 此时.left,.right就像排列在.center的右侧后面位置 */
+			.center,
+			.left,
+			.right {
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="center">center</div>
+			<div class="left">left</div>
+			<div class="right">right</div>
+		</div>
+	</body>
+</html>

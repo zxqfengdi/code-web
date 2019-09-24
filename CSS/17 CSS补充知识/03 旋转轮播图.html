@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body {
+				/* 给父元素设置透视,使子元素在变换过程中呈现透视效果(近大远小) */
+				perspective: 1000px;
+			}
+			section {
+				width: 300px;
+				height: 200px;
+				margin: 100px auto;
+				background: url(images/3.jpg) no-repeat;
+				background-size: cover;
+				position: relative;
+				/* 让子盒子以3d形式展示 */
+				transform-style: preserve-3d;
+				transition: all 5s linear;
+			}
+			section div {
+				width: 100%;
+				height: 100%;
+				background: url(images/chu.jpg) no-repeat;
+				background-size: corver;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			section div:nth-child(1) {
+				/* 图片沿着y轴旋转0度,沿着z轴正方向移动400px(往眼前来会变大) */
+				transform: rotateY(0deg) translateZ(400px);
+			}
+			section div:nth-child(2) {
+				/* 图片沿着y轴旋转60度,沿着z轴正方向移动400px(往眼前来会变大) */
+				transform: rotateY(60deg) translateZ(400px);
+			}
+			section div:nth-child(3) {
+				/* 图片沿着y轴旋转120度,沿着z轴正方向移动400px(往眼前来会变大) */
+				transform: rotateY(120deg) translateZ(400px);
+			}
+			section div:nth-child(4) {
+				/* 图片沿着y轴旋转0度,沿着z轴正方向移动400px(往眼前来会变大) */
+				transform: rotateY(180deg) translateZ(400px);
+			}
+			section div:nth-child(5) {
+				/* 图片沿着y轴旋转240度,沿着z轴正方向移动400px(往眼前来会变大) */
+				transform: rotateY(240deg) translateZ(400px);
+			}
+			section div:nth-child(6) {
+				/* 图片沿着y轴旋转300度,沿着z轴正方向移动400px(往眼前来会变大) */
+				transform: rotateY(300deg) translateZ(400px);
+			}
+			section:hover {
+				transform: rotateY(360deg);
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</section>
+	</body>
+</html>

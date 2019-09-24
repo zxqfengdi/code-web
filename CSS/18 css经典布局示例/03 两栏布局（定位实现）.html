@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/* 子绝父相，.left元素设置绝对定位脱标， .right元素设置左外边距*/
+			.container {
+				width: 80%;
+				height: 150px;
+				margin: 0 auto;
+				position: relative;
+			}
+			.left {
+				width: 200px;
+				height: 100%;
+				background-color: pink;
+				position: absolute;
+			}
+			.right {
+				height: 100%;
+				background-color: skyblue;
+				margin-left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left"></div>
+			<div class="right"></div>
+		</div>
+	</body>
+</html>

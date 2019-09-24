@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body {
+				/* 给父元素添加透视效果 */
+				perspective: 1000px;
+			}
+			div {
+				width: 100px;
+				height: 145px;
+				border: 1px solid red;
+				margin: 100px auto;
+				/* div盒子沿着Y轴旋转30度 */
+				transform: rotateY(30deg);
+				/* 让父盒子里面的子元素以3d效果展示 */
+				transform-style: preserve-3d;
+			}
+			div img {
+				border: 1px solid blue;
+				/* 图片沿着y轴旋转30度 */
+				transform: rotateY(30deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="images/pk1.png" alt="" width="100px">
+		</div>
+	</body>
+</html>

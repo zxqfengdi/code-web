@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container {
+				width: 80%;
+				height: 150px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			/* 方法一:left元素左侧浮动，.right元素不给宽度（块级元素不给宽度默认为父元素100%），
+			设置其左外边距等于.left元素宽度为.left元素预留位置。 */
+/* 			.left {
+				width: 200px;
+				height: 100%;
+				background-color: pink;
+				float: left;
+			}
+			.right {
+				height: 100%;
+				background-color: skyblue;
+				margin-left: 200px;
+			} */
+			/* 方法二:.left与.right元素均左侧浮动 */
+/* 			.left {
+				width: 200px;
+				height: 100%;
+				background-color: pink;
+				float: left;
+			}
+			.right {
+				width: calc(100% - 200px);
+				height: 100%;
+				background-color: skyblue;
+				float: left;
+			} */
+			/* 方法三:.left元素左浮动,.right元素触发BFC,BFC特性不会忽视浮动元素 */
+/* 			.left {
+				width: 200px;
+				height: 100%;
+				background-color: pink;
+				float: left;
+			}
+			.right {
+				height: 100%;
+				background-color: skyblue;
+				overflow: auto;
+			} */
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left"></div>
+			<div class="right"></div>
+		</div>
+	</body>
+</html>
+
