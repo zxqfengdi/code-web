@@ -117,7 +117,7 @@ nav {
 }
 .banner-in {
     height: 420px;
-    background: url("images/banner2.png") 0 0 no-repeat;
+    background: url(../images/banner2.png) 0 0 no-repeat;
 }
 /*侧边栏部分*/
 .sidebar {

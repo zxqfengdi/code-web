@@ -5,6 +5,8 @@
 *.png
 *.svg
 *.psd
+*.ico
 *idea/
 *.vscode
 *images/
+*fonts
