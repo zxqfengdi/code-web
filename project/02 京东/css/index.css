@@ -1,0 +1,120 @@
+.grid {
+	height: 470px;
+	margin-top: 10px;
+}
+.colu1 {
+	width: 190px;
+	height: 470px;
+	margin-right: 10px;
+	padding-top: 10px;
+	background-color: #fff;
+	float: left;
+	box-sizing: border-box;
+}
+.colu1 li {
+	line-height: 25px;
+	padding-left: 18px;
+}
+.colu1 li:hover {
+	background-color: rgba(0,0,0,0.2);
+}
+.colu1 li a {
+	color: #333;
+}
+.colu1 li a:hover {
+	color: #c81623;
+}
+.colu2 {
+	width: 800px;
+	height: 470px;
+	float: left;
+}
+.colu2_in_left {
+	position: relative;
+	float: left;
+	width: 590px;
+}
+.colu2_in_left .bg {
+	display: block;
+	width: 590px;
+	height: 470px;
+	/* background-color: pink; */
+	background: url(../images/think.jpg);
+}
+.colu2_in_left .icon-left,
+.colu2_in_left .icon-right {
+	display: block;
+	width: 25px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	color: #f0eae4;
+	font-size: 14px;
+	background-color: rgba(0,0,0,0.15);
+	font-family: icomoon;
+	position: absolute;
+}
+.colu2_in_left .icon-left:hover,
+.colu2_in_left .icon-right:hover {
+	background-color: rgba(0,0,0,0.4);
+}
+.colu2_in_left .icon-left {
+	top: 50%;
+	margin-top: -17px;
+	border-radius: 0 50% 50% 0;
+}
+.colu2_in_left .icon-right {
+	top: 50%;
+	margin-top: -17px;
+	right: 0;
+	border-radius: 50% 0 0 50%;
+}
+.colu2_in_left ul {
+	width: 120px;
+	height: 16px;
+	position: absolute;
+	left: 28px;
+	bottom: 18px;
+}
+.colu2_in_left li {
+	float: left;
+}
+.colu2_in_left .circle_icon a {
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	background-color: #d8bda9;
+	border-radius: 50%;
+	margin: 0 2px;
+}
+.colu2_in_right {
+	width: 190px;
+	height: 470px;
+	float: left;
+	background-color: #fff;
+	margin: 0 10px;
+}
+.colu2_in_right a {
+	display: block;
+	width: 190px;
+	height: 150px;
+	background: url(../images/right01.jpg) no-repeat;
+	background-size: 190px 150px;
+}
+.colu2_in_right li:nth-child(2) a {
+	margin: 10px 0;
+	background: url(../images/right02.jpg) no-repeat;
+	background-size: 190px 150px;
+}
+.colu2_in_right li:nth-child(3) a {
+	background: url(../images/right03.jpg) no-repeat;
+	background-size: 190px 150px;
+}
+.colu3 {
+	width: 190px;
+	height: 470px;
+	background-color: #fff;
+	float: right;
+}
+
