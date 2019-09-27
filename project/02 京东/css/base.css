@@ -43,7 +43,7 @@ ul {
 	color: #f1024f;
 }
 /* 去掉多个元素的默认内外边距 */
-ul,li,input,h1,h5,p,button,dl,dt,dd {
+ul,li,input,h1,h4,h5,p,button,dl,dt,dd {
 	margin: 0;
 	padding: 0;
 }
