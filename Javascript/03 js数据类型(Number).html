@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 在c,java,c#中声明变量时就可以确定变量类型
+			// int age = 18;
+			// javascript中声明变量时不确定变量类型(弱类型语言)
+			// 代码执行过程中确定变量类型(简单数据类型与复杂数据类型)
+			
+			// 简单数据类型:Number String Boolean Undefined Null
+			// Number类型(数值量字面值)
+			var num1, num2, num3;
+			num1 = 10;
+			num2 = 10.5;
+			num3 = 5.8e5; // 科学计数法
+			
+			console.log(num1, num2 ,num3)
+			
+			//Number类型进制(八进制、十六进制在进行运算时会转换为十进制)
+			// 十六进制:0-9 A-F
+			var num4 = 0x5f;
+			console.log(num4)
+			// 八进制:0-7(字面量数值超过其范围，忽略前面0，作为十进制解析)
+			var num5, num6;
+			num5 = 016;
+			num6 = 018; // 超过表示范围,以十进制解析
+			
+			console.log(num5, num6)
+			
+			// 浮点数精度问题:最高精度为17位小数
+			console.log(0.1 + 0.2)
+			console.log(0.07 * 100)
+			console.log(0.1 + 0.2 === 0.3)
+			
+			// Number数值范围
+			console.log(Number.MAX_VALUE) // 最大值
+			console.log(Number.MIN_VALUE) // 最小值
+			
+			// Infinit(无穷大)与NaN(非数字)
+			console.log(5 / 0)
+			console.log(5 * 'abc')
+			console.log(isNaN(5))
+			console.log(isNaN('abc'))
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>js书写位置</title>
+		<!-- 方式二：写在script标签中 可在任何位置 建议在head标签内 （网页运行时就会弹出来，从上往下运行） -->
+		<script type="text/javascript">
+			alert("内部script标签内：hello world!");
+		</script>
+		<!-- 方式三：外部js文件进入(占位作用，外部js文件内容会占有这个位置) -->
+		<!-- 引用外部js文件的script标签中不可以写JavaScript代码 -->
+		<script src="index.js">
+			<!-- 此代码不会执行 -->
+			alert('test'); 
+		</script>
+	</head>
+	<body>  
+		<!-- 方式一：行内样式 不建议使用 -->
+		<input type="button" value="我是一个按钮" onclick="alert('行内样式:hello world!')">
+		
+	</body>
+</html>
