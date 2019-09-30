@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//表达式组成:操作符 操作数
+			// 算术运算符:+ - * / %
+			var x = 5, y = 10;
+			
+			console.log(x + y);
+			console.log(x - y);
+			console.log(x * y);
+			console.log(x / y);
+			console.log(x % y);
+			// 算术运算时,被除数为0
+			console.log(x / 0);  // 结果无穷大
+			console.log(x % 0);  // 结果非数字
+			
+			// 一元运算符:只有一个操作数的运算符
+			// 前置++ :变量自身加1并作为表达式的值返回 
+			// 前置-- :变量自身减1并作为表达式的值返回
+			var num1 = 5;
+			console.log(++num1);
+			console.log(num1)
+			console.log(--num1);
+			console.log(num1);
+			
+			// 后置++: 变量当前值作为表达式值返回,变量执行加1
+			// 后置--: 变量当前值作为表达式值返回,变量执行减1
+			var num2 = 7;
+			console.log(num2++);
+			console.log(num2);
+			console.log(num2--);
+			console.log(num2);
+			
+			// 逻辑运算符(布尔运算符)
+			var a = true, b = false;
+			console.log(a && a);
+			console.log(a && b);
+			console.log(a || b);
+			console.log(b || b);
+			console.log(!a);
+			console.log(!b);
+			
+			// 关系运算符(比较运算符)
+			var a = 5, b = 10, c = '5';
+			console.log(a > b);
+			console.log(a < b);
+			console.log(a >= c);
+			console.log(a <= c);
+			// ==：判断变量值是否相等
+			console.log(a == c);
+			console.log(a != c);
+			// ===:类型和值均相等才为相等(严格相等，建议使用)
+			console.log(a === c);
+			console.log(a !== c);
+			
+			// 赋值运算符
+			var num = 5;
+			num += 5; // 相当于num = num + 5;
+			console.log(num);
+			num -= 5; // 相当于num = num - 5;
+			console.log(num);
+			num *= 5; // 相当于num = num * 5;
+			console.log(num);
+			num /= 5; // 相当于num = num / 5;
+			console.log(num);
+			num %= 5; // 相当于num = num % 5;
+			console.log(num);
+			
+			// 运算符优先级
+			// 1. ()优先级最高
+			// 2. 一元运算符 ++ -- !
+			// 3. 算术运算符 + - * / %
+			// 4. 关系运算符: > >= < <= == != === !==
+			// 5. 逻辑运算符: && ||
+			// 6. 赋值运算符: = += -= *= /= %=
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

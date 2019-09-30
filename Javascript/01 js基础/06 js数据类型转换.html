@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// typeof:获取变量数据类型(变量指向的值的数据类型)
+			var age = 10, 
+			name = 'hello',
+			isRight = true,
+			a,
+			b = null;
+			
+			console.log(age, typeof age);
+			console.log(name, typeof name);
+			console.log(isRight, typeof isRight);
+			console.log(a, typeof a);
+			console.log(b, typeof b);
+			
+			// 数据类型转换
+			// 转换为字符串类型
+			// toString()方法:一般使用此方法
+			console.log(age.toString(), typeof age.toString());
+			console.log(isRight.toString(), typeof isRight.toString());
+			// console.log(b.toString(), typeof b.toString()) null，undefined没有toString方法
+			// String()方法:对undefined null使用String()方法
+			console.log(String(age), typeof String(age));
+			console.log(String(isRight), typeof String(isRight));
+			console.log(String(a), typeof String(a));
+			console.log(String(b), typeof String(b));
+			// +操作实现字符串拼接：遇到数字先将数字转换为字符串类型后进行字符串拼接(typeof加空格改变执行优先级)
+			console.log(age + '', typeof(age + ''));
+			console.log(isRight + '', typeof(isRight + ''));
+			
+			// 转换为数字类型
+			// Number()方法:将字符串转换为数字类型,若字符串中有一个字符不为数字,返回NaN.
+			console.log(Number(name), typeof Number(name));
+			console.log(Number(isRight), typeof Number(isRight));
+			console.log(Number('123'), typeof Number('123'));
+			console.log(Number('123s'), typeof Number('123s'));
+			// parseInt()方法: int整数
+			console.log(parseInt('123'), typeof parseInt('123'));
+			console.log(parseInt(true), typeof parseInt(true)); // parseInt不能转换布尔类型
+			// parseInt()在转换字符串时,如果开头为数字就进行转换直到非数字结束(开头非数字就为NaN)
+			console.log(parseInt('123abc'), typeof parseInt('123abc'));
+			console.log(parseInt('abc123'), typeof parseInt('abc123'));
+			// parseFloat():float浮点数
+			console.log(parseFloat('123.67'), typeof parseFloat('123.67'));
+			console.log(parseFloat(true), typeof parseFloat(true));  // parseFloat不能转换布尔类型
+			console.log(parseFloat('123.56.abc'), typeof parseFloat('123.56.abc'));
+			// +, -, -0等运算
+			console.log(+'500', typeof(+'500'));
+			console.log(-'500', typeof(-'500'));
+			// -操作遇到字符串先将字符串转换为数字类型后进行运算,如果字符串不能成功转换结果为NaN
+			// +操作遇到数字先将数字转换为字符串类型后进行字符串拼接
+			console.log('500' - 0, typeof('500' - 0)); 
+			
+			// 转换为布尔类型:0 '' null undefined NaN都会被转换为false
+			// Boolean()
+			console.log(Boolean(50));
+			console.log(Boolean('abc'));
+			console.log(Boolean(0));
+			console.log(Boolean(''));
+			console.log(Boolean(undefined));
+			console.log(Boolean(null));
+			console.log(Boolean(NaN));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
