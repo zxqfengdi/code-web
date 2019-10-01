@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// while循环:先判断条件后执行语句
+			// 1-100的和
+			var i = 1, sum = 0;
+			while (i <= 100) {
+				sum += i;
+				i++;
+			}
+			console.log(sum);
+			// 100内7的倍数
+			var i = 1;
+			while (i <= 100) {
+				if (i % 7 === 0) {
+					console.log(i);
+				}
+				i++;
+			}
+			// 100内所有偶数和
+			var i = 1, sum = 0;
+			while (i <= 100) {
+				if (i % 2 === 0) {
+					sum += i;
+				}
+				i++;
+			}
+			console.log(sum);
+			
+			// do-while循环:先执行语句,后进行判断
+			// 1-100的和
+			var i = 1, sum = 0;
+			do {
+				sum += i;
+				i ++;
+			} while (i <= 100)
+			console.log(sum);
+			
+			//浏览器弹出对话框用户输入prompt	
+			var input = prompt();
+			console.log(input) 
+			
+			// for循环:
+			var sum = 0;
+			for (var i = 1; i <= 100; i++) {
+				sum += i;
+			}
+			console.log(sum);
+			
+			// 循环练习
+			// 循环打印正方形:问题单行输出多个*
+			var str = '';
+			for (var j = 1; j <= 10; j++) {
+				for (var i = 1; i <= 10; i++) {
+					str += '* ';
+				}
+				str += '\n';
+			}
+			console.log(str);
+			// 循环打印三角形
+			var str = '';
+			for (var j = 1; j <= 10; j++) {
+				for (var i = j; i <= 10; i++) {
+					str += '* ';
+				}
+				str += '\n';
+			}
+			console.log(str);
+			// 打印九九乘法表
+			var str = '';
+			for (var i = 1; i <= 9; i++) {
+				for (j = 1; j <= i; j++) {
+					str += (j + '*' + i + '=' + j * i + '\t');
+				}
+				str += '\n';
+			}
+			console.log(str);
+			
+			// break和continue
+			// break退出循环
+			for (var i = 50; i <= 200; i++) {
+				if (i % 7 === 0) {
+					console.log(i);
+					break;
+				}
+			}
+			// continue暂时跳出循环
+			// 计算1-100的和,跳过个位数为3的数字
+			var sum = 0;
+			for (var i = 1; i <= 100; i++) {
+				if (i % 10 === 3) {
+					console.log(i);
+				} else {
+					sum += i;
+				}
+			}
+			console.log('sum:' + sum);
+			
+			var sum = 0;
+			for (var i = 1; i <= 100; i++) {
+				if (i % 10 === 3) {
+					continue;
+				} 
+				sum += i;
+			}
+			console.log('sum:' + sum);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

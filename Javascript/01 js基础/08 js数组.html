@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 数组:可以存储多个数据(array),数据可为不同类型
+			
+			// 定义数组(使用[]表示)
+			var test = []; // 空数组
+			var names = ['张三', '王五', '李四'];
+			console.log(names);
+			
+			// 获取数组中数据:使用下表索引(从零开始)
+			console.log(names.length)  // 数组长度(将数组长度设为0时为清空数组)
+			console.log(names[0]);
+			console.log(names[1]);
+			
+			// 更改数组
+			// 修改数组元素:直接重新赋值
+			names[1] = 'hello';
+			console.log(names);
+			// 新增数组元素
+			names[3] = 'abc';
+			console.log(names.length, names);
+			// 不按索引赋值时,跳过的索引对应元素为undefined
+			names[5] = 'fengdi';
+			console.log(names);
+			
+			// 遍历数组元素
+			var names = ['张三', '王五', '李四'];
+			for (var i = 0; i < names.length; i++) {
+				console.log(names[i]);
+			}
+			
+			// 反向遍历数组
+			var names = ['张三', '王五', '李四'];
+			for (var i = names.length - 1; i >= 0; i--) {
+				console.log(names[i]);
+			}
+			
+			// 求数组中的最大值最小值
+			var numbers = [65, 13, 95, 78, 21];
+			// 假设数组中第一个数就是最大值,让后面的值与其比较,若有比假设最大值还大的就替换假设最大值为该值.
+			var max = numbers[0]; 
+			var min = numbers[0];
+			var maxIndex = 0, minIndex = 0;
+			/* 注意:若maxIndex ，minIndex不赋值为undefined,而数组第一项刚好为数组最大值或者最小值.
+				此时for循环内部的if语句内部的内容不会执行,则maxIndex ，minIndex就不会改变结果就输出为undefined
+				因此我们将maxIndex ，minIndex初始值赋值为0,避免上述情况.
+			*/
+			for (var i = 1; i < numbers.length; i++) {
+				if (max < numbers[i]) {
+					max = numbers[i];
+					maxIndex = i;
+				}
+				if (min > numbers[i]) {
+					min = numbers[i];
+					minIndex = i;
+				}
+			}
+			console.log(max, maxIndex);
+			console.log(min, minIndex);
+			
+			// 将数组元素使用分隔符连接形成字符串
+			var seperator = '|';
+			var names = ['张三', '王五', '李四'];
+			var str = names[0];
+			for (var i = 1; i < names.length; i++) {
+				str = str + seperator + names[i];
+			}
+			console.log(str);
+			
+			// 帅选数组:将数组中不为零的元素取出组成一个新的数组
+			var numbers = [66, 0, 89, 75, 65, 42, 31, 0, 100, 0];
+			var newArray = [];
+			for (var i = 0; i < numbers.length; i ++) {
+				if (numbers[i] !== 0) {
+					// 将空数组的长度作为索引依次存储值
+					newArray[newArray.length] = numbers[i];
+				}
+			}
+			console.log(newArray);
+			
+			// 翻转数组
+			var numbers = [4, 5, 7, 9];
+			var newArray = [];
+			
+			for (var i = numbers.length - 1; i >= 0; i--) {
+				newArray[newArray.length] = numbers[i];
+			}
+			console.log(newArray);
+			
+			// 冒泡排序
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
