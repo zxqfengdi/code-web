@@ -92,6 +92,51 @@
 			console.log(newArray);
 			
 			// 冒泡排序
+			var numbers = [25, 68, 34, 18, 97, 63, 64];
+			// 外层循环控制趟数
+			for (var i = 0; i < numbers.length - 1; i++) {
+				// 内层循环控制比较次数
+				for (var j = 0; j < numbers.length - 1 - i; j++)
+				{
+					// 两两比较
+					var tmp;
+					if (numbers[j] > numbers[j+1]) {
+						tmp = numbers[j];
+						numbers[j] = numbers[j+1];
+						numbers[j+1] = tmp;
+					}
+				}
+			}
+			console.log(numbers);
+			
+			// 冒泡排序优化
+			var numbers = [25, 68, 34, 18, 97, 63, 64];
+			var count = 1;
+			// 外层循环控制趟数
+			for (var i = 0; i < numbers.length - 1; i++) {
+				count++;
+				// 内层循环控制比较次数
+				// 定义布尔型变量作为标志判断是否排序好
+				var isSort = true;
+				for (var j = 0; j < numbers.length - 1 - i; j++)
+				{
+					// 两两比较
+					var tmp;
+					count++;
+					if (numbers[j] > numbers[j+1]) {
+						isSort = false;
+						tmp = numbers[j];
+						numbers[j] = numbers[j+1];
+						numbers[j+1] = tmp;
+					}
+				}
+				// 某一趟结束,判断排序是否结束:根据相邻数据是否发生数据交换
+				if (isSort) {
+					break;
+				}
+			}
+			console.log(count)
+			console.log(numbers);
 		</script>
 	</head>
 	<body>
