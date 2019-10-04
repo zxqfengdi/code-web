@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 求斐波那契数列的第N个数
+			 function getFib(n) {
+				 var num1 = 1, num2 = 1, current;
+				 for (var i = 3; i <= n; i++) {
+					 current = num1 + num2;
+					 num1 = num2;
+					 num2 = current;
+				 }
+				 return current;
+			 }
+			 var result = getFib(5);
+			 console.log(result);
+			 
+			 // 翻转数组,返回一个新数组
+			 function reverseArr(arr) {
+				 var newArray = [];
+				 for (var i = arr.length - 1; i >= 0; i--) {
+					 newArray[newArray.length] = arr[i];
+				 }
+				 return newArray;
+			 }
+			 var result = reverseArr([1, 4, 5, 8, 6]);
+			 console.log(result);
+			 
+			 // 对数组排序,从小到大(冒泡排序)
+			 function sortArray(arr) {
+				 for (var i = 0; i < arr.length - 1; i++) {
+					 var isSort = true;
+					 for (var j = 0; j < arr.length - 1 - i; j++) {
+						 if (arr[j] > arr[j+1]) {
+							 isSort = false;
+							 var tmp = arr[j];
+							 arr[j] = arr[j+1];
+							 arr[j+1] = tmp;
+						 }
+					 }
+					 // isSort为true则说明排序完成
+					 if (isSort) {
+						 break;
+					 }
+				 }
+				 return arr;
+			 }
+			 
+			 var array = [25, 16, 67, 54, 98, 13, 8];
+			 var result = sortArray(array);
+			 console.log(result);
+			 
+			 // 输入一个年份,判断是否为闰年(闰年：能被4整除并且不能被100整除，或者能被400整除)
+			 function isRun(year) {
+				 // 假设不是闰年
+				 var result = false;
+				 if ((year % 4 === 0 && year % 100 != 0) || (year % 400 === 0)) {
+					 result = true;
+				 }
+				 return result;
+			 }
+			 var result = isRun(2000);
+			 console.log(result);
+			 
+			 // 输入一个年月日,判断是这一年的第几天
+			 function getDays(year, month, day) {
+				 var days = day; // 先将当前月的天数加到总天数
+				 for (var i = 1; i < month; i++) {
+					 switch (i) {
+						 case 1:
+						 case 3:
+						 case 5:
+						 case 7:
+						 case 8:
+						 case 10:
+						 case 12:
+							days += 31;
+							break;
+						case 4:
+						case 6:
+						case 9:
+						case 11:
+							days += 30;
+							break;
+						case 2: 
+							if (isRun(year)) {
+								days += 28;
+							} else {
+								days += 29;
+							}
+							break;
+					 }
+				 }
+				 return days;
+			 }
+			 var result = getDays(2000, 2, 28);
+			 console.log(result);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

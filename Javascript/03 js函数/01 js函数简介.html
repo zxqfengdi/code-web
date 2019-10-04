@@ -9,15 +9,92 @@
 			function getSum() {
 				// 函数体:函数要做的事情
 				var sum = 0;
-				
 				for (var i = 1; i <= 100; i++) {
 					sum += i;
 				}
 				return sum;
 			}
+			
 			//函数调用
-			result = getSum();
+			var result = getSum();
 			console.log(result);
+			
+			// 有参函数
+			function getSum(num) {
+				var sum = 0;
+				for (var i = 1; i <= num; i++) {
+					sum += i;
+				}
+				console.log(sum);
+			}
+			getSum(200);
+			
+			// 函数练习
+			// 求三个数之间的最大值
+			// function getMax(a, b, c) {
+			// 	if (a > b && a > c) {
+			// 		console.log(a);
+			// 	} else if (b > a && b > c) {
+			// 		console.log(b);
+			// 	} else if (c > a && c > b) {
+			// 		console.log(c);
+			// 	}
+			// }
+			
+			getMax(5, 9, 6);
+			
+			// 求n个数之间的最大值
+			function getMax(arr) {
+				var max = arr[0];
+				
+				for (var i = 1; i < arr.length; i++) {
+					if (max < arr[i]) {
+						max = arr[i];
+					}
+				}
+				
+				console.log(max);
+			}
+			
+			var array = [75, 69, 12, 35, 108, 256];
+			getMax(array);
+			
+			// 判断一个数是否为素数(质数， 只能被1和自身整除的数)
+			function jdugePrime(num) {
+				var isPrime = true; // 假设为质数
+				for (var i = 2; i <= num - 1; i++) {
+					if (num % i === 0) {
+						// 这个if语句若执行则说明不为质数
+						isPrime = false;
+						break;
+					} 
+				} 
+				// 循环结束判断标志值来确认是否为质数
+				if (isPrime) {
+					console.log('质数');
+				} else {
+					console.log('非质数');
+				}
+			}
+			
+			jdugePrime(15);
+			// 获取1-n之间的素数
+			// 外层循环控制每个数,内层循环进行判断每个数是否为素数
+			function getPrime(n) {
+				for (var i = 2; i <= n ; i++) {
+					var isPrime = true;
+					for (j = 2; j <= i - 1; j++) {
+						if (i % j === 0) {
+							isPrime = false;
+							break;
+						}
+					}
+					if (isPrime) {
+						console.log(j);
+					}
+				}
+			}
+			getPrime(100);
 		</script>
 	</head>
 	<body>

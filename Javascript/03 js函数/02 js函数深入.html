@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 函数返回值:使用return关键字
+			// 返回值练习
+			// 求一组数的最大值
+			function getMax(arr) {
+				var max = arr[0];
+				for (var i = 1; i < arr.length; i++) {
+					if (max < arr[i]) {
+						max = arr[i];
+					}
+				}
+				
+				return max;
+			}
+			
+			// 变量接收函数返回值
+			var array = [15, 96, 108, 25, 63, 78];
+			var max = getMax(array);
+			console.log(max);
+			
+			// 求某个数的阶乘
+			function getJieCheng(num) {
+				var multi = 1;
+				for (var i = 1; i <= num; i++) {
+					multi *= i;
+				}
+				return multi;
+			}
+			
+			var result = getJieCheng(5);
+			console.log(result);
+			
+			// 求1-n阶乘和
+			function jieSum(num) {
+				var sum = 0;
+				for (var i = 1; i <= num; i++) {
+					var multi = getJieCheng(i)
+					sum += multi;
+				}
+				return sum;
+			}
+			var result = jieSum(5);
+			console.log(result);
+			
+			// arguments:可使用arguments获取函数调用时传入的实参(获取动态实参)
+			function test(a , b, c) {
+				console.log(arguments);
+				console.log('arguments演示');
+			}
+			
+			test(4, 5, 6);
+			// arguments案例练习
+			// 求一组数的最大值
+			function getMax() {
+				var max = arguments[0];
+				for (var i = 1; i < arguments.length; i++) {
+					if (max < arguments[i]) {
+						max = arguments[i];
+					}
+				}
+				return max;
+			}
+			
+			var max = getMax(5, 6, 7, 8);
+			console.log(max);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

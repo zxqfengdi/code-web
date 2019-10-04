@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 命名函数(有名函数)
+			// function test() {
+				
+			// }
+			// 函数表达式
+			// var fn = function () {
+				
+			// }
+			// 匿名函数(无函数名称)
+			// function () {
+				
+			// }		
+			// 自调用函数:当函数书写完成后立即进行调用(匿名函数实现)
+			( function () {
+				console.log('自调用函数');
+			})()
+			
+			// 函数也是数据类型(可以作为参数传入或者作为返回值)
+			var fn = function () {
+				
+			}
+			console.log(typeof fn);
+			
+			// 01 函数作为参数传入
+			var fn = function () {
+				console.log('我是被传递过来的函数！');
+			}
+			function test(fun) {
+				// 函数内部执行传过来的函数
+				fun();
+			}
+			test(fn); // 此处使用变量名作为参数传入,因为此变量指向一个函数(也可以使用函数名作为变量传入)
+			
+			// 02 函数作为返回值
+			function test(a) {
+				var b = 3;
+				
+				return function () {
+					console.log(a + b);
+				}
+			}
+			var fn = test(4);
+			fn();
+			
+			// 函数作用域
+			// 全局作用域:在script标签中或者独立的js文件中定义的变量为全局变量(函数内部不使用var关键字直接定义的变量也为全局变量)
+			// 局部作用域:函数内部定义的变量为局部变量,只能在定义该变量的函数中可以访问
+			// 块级作用域:ECMAScript没有块级作用域(新版本有块级作用域)
+			
+			// 作用域链:当前作用域--->外部作用域--->.....---->全局作用域(局部作用域内部的同名变量会覆盖全局变量的值)
+			
+			// 预解析:
+			// 01 变量提升:将变量声明提升到当前作用域的最上面,不包括变量的赋值
+			// 02 函数提升:将函数声明提升到当前作用域的最上面,不包括函数的调用(代表JavaScript中函数声明不一定必须在函数调用之前)
+			// 03 提升过程中，先提升变量声明，再提升函数声明
+			// 预解析过程中,若函数名字与变量名字相同,则函数优先被作为目标输出
+			
+			// 预解析案例演示
+			// 案例1
+			// var a = 25;
+			// function abc() {
+			//   alert(a); 
+			//   var a = 10;
+			// }
+			// abc();
+			
+			// 案例1预解析:结果为:undefined
+			// var a;
+			// function abc() {
+			// 	var a;
+			// 	alert(a); // a声明未赋值为ubdefined
+			// 	a = 10;
+			// }
+			// a = 25;
+			// abc();
+			
+			// 案例2
+			// console.log(a);
+			// function a() {
+			//   console.log('aaaaa');
+			// }
+			// var a = 1;
+			// console.log(a);
+			
+			// 案例2预解析
+			// var a;
+			// function a() {
+			//   console.log('aaaaa');
+			// }
+			// console.log(a);
+			// a = 1;
+			// console.log(a);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
