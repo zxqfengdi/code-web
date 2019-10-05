@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// new构造函数详解
+			function Student(name, age, sex, score) {
+				// 属性
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+				this.score = score;
+				
+				// 方法
+				this.sayHai = function () {
+					console.log(this.name + ': hello');
+				}
+			}
+			
+			var stu1 = new Student('小明', 18, '男', 89);
+			
+			// new关键字执行过程
+			// 01 在内存中创建一个空对象
+			// 02 让this指向刚刚创建的对象
+			// 03 执行构造函数,在构造函数中设置属性和方法
+			// 04 返回当前对象
+			
+			// this关键字详解
+			// 函数中的this:window
+			function fn () {
+				console.log(this);
+			}
+			fn();
+			// 方法中的this:指向方法所属的对象
+			var student = {
+				name: '小明',
+				age: 20,
+				fn: function () {
+					console.log(this);
+				}
+			}
+			student.fn();
+			// 构造函数的this:指向构造函数创造的对象
+			function Student() {
+				this.name = 'yuxi';
+				this.age = 18;
+				console.log(this);
+			}
+			var student = new Student();
+			
+			// 对象属性与方法的操作
+			var obj = {
+				name: 'yuxi',
+				age: 18,
+				sex: 'man',
+				sayHai: function () {
+					console.log('hello world!');
+				}
+			};
+			console.log(obj);
+			// 对象成员遍历(for in 写法)
+			for (var key in obj) {
+				console.log(key + '---' + obj[key]);
+			}
+			
+			// 使用循环动态为对象添加多个属性
+			var test = {};
+			for (var i = 1; i <= 5; i++) {
+				test['a' + i] = i * i;
+			}
+			console.log(test);
+			
+			// 对象属性删除:delete关键字
+			var student01 = {
+				name: '小明',
+				age: 20,
+				fn: function () {
+					console.log(this);
+				}
+			}
+			console.log(student01.name);
+			delete student01.name; // 删除属性与方法
+			console.log(student01.name);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 对象:万物皆对象.对象是一个具体事物,对象具有特征和行为(属性和方法).
+			// 程序中的对象是现实世界事物的抽象.
+			// JavaScript对象时无序属性的集合,使用{}表示
+			
+			var student = {
+				name: "张飞",
+				age: 18,
+				sex: "男",
+				sayHai: function () {
+					console.log('Hai!');
+				}
+			};
+			console.log(typeof student);
+			
+			// 创建对象
+			// 01 对象字面量(直接写出属性和方法)
+			var dog = {
+				name: 'puppy',
+				age: 6,
+				type: '中华田园犬',
+				color: 'red',
+				// 对象内部使用属性的值(this关键字代表当前对象，类似于python中的self)
+				bark: function () {
+					console.log(this.name + '汪汪汪');
+				},
+				eat: function () {
+					console.log(this.name + '啃骨头');
+				}
+			}
+			
+			// 访问对象属性和方法(对象.属性名 对象.方法名())
+			console.log(dog.name);
+			console.log(dog.type);
+			dog.bark();
+			dog.eat();
+			
+			// 属性的另一种访问方式(对象内部为键值对，类似于python中的字典，可使用[key]访问属性)
+			console.log(dog['name']);
+			console.log(dog['type']);
+			
+			// 02 构造函数 new Object()方式
+			var hero = new Object(); // 创建一个空对象
+			// 为对象动态添加属性和方法
+			hero.name = '黄忠';
+			hero.age = 36;
+			hero.equipment = ['头盔', '盔甲'];
+			hero.blood = 100;
+			// 添加方法
+			hero.attack = function () {
+				console.log(this.name + ': 射箭');
+			};
+			hero.run = function () {
+				console.log(this.name + ': 加速跑');
+			};
+			// 输出对象
+			console.log(hero);
+			
+			// 03 工厂方法创建对象(通过传入不同的参数创建不同的对象)
+			function newHero(name, age, equipment, blood) {
+				var hero = new Object(); // 创建空对象
+				// 属性
+				hero.name = name;
+				hero.age = age;
+				hero.equipment = equipment;
+				hero.blood = blood;
+				// 方法
+				hero.attack = function () {
+					console.log(this.name + ': 射箭');
+				};
+				hero.run = function () {
+					console.log(this.name + ': 加速跑');
+				};
+				// 返回创建好的对象
+				return hero;
+			}
+			
+			var hero1 = newHero('黄忠', 16, ['头盔', '大炮'], 100);
+			var hero2 = newHero('赵云', 18, ['盔甲', '霸王枪'], 100);
+			console.log(hero1, hero2);
+			
+			// 04 自定义构造函数
+			function Hero(name, age, equipment, blood) {
+				// 使用this给对象动态添加成员(属性与方法)
+				this.name = name;
+				this.age = age;
+				this.equipment = equipment;
+				this.blood = blood;
+				this.attack = function () {
+					console.log(this.name + ': 射箭');
+				};
+				this.run = function () {
+					console.log(this.name + ': 加速跑');
+				};
+			}
+			var hero3 = new Hero('黄忠', 16, ['头盔', '大炮'], 100);
+			var hero4 = new Hero('赵云', 18, ['盔甲', '霸王枪'], 100);
+			console.log(hero3, hero4);
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
