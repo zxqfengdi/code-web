@@ -4,18 +4,18 @@
 		<meta charset="utf-8">
 		<title></title>
 		<script type="text/javascript">
-			// typeof:获取变量数据类型(变量指向的值的数据类型)
+			// typeof:获取基本变量数据类型(简单数据类型变量存储的就是值，复杂类型存储的为地址)
 			var age = 10, 
-			name = 'hello',
-			isRight = true,
-			a,
-			b = null;
+				name = 'hello',
+				isRight = true,
+				a,
+				b = null;
 			
 			console.log(age, typeof age);
 			console.log(name, typeof name);
 			console.log(isRight, typeof isRight);
 			console.log(a, typeof a);
-			console.log(b, typeof b);
+			console.log(b, typeof b);  // null为object对象类型是js的bug,但是无法修改
 			
 			// 数据类型转换
 			// 转换为字符串类型
@@ -28,7 +28,7 @@
 			console.log(String(isRight), typeof String(isRight));
 			console.log(String(a), typeof String(a));
 			console.log(String(b), typeof String(b));
-			// +操作实现字符串拼接：遇到数字先将数字转换为字符串类型后进行字符串拼接(typeof加空格改变执行优先级)
+			// + 操作实现字符串拼接：遇到数字先将数字转换为字符串类型后进行字符串拼接(typeof加空格改变执行优先级)
 			console.log(age + '', typeof(age + ''));
 			console.log(isRight + '', typeof(isRight + ''));
 			
@@ -44,10 +44,10 @@
 			// parseInt()在转换字符串时,如果开头为数字就进行转换直到非数字结束(开头非数字就为NaN)
 			console.log(parseInt('123abc'), typeof parseInt('123abc'));
 			console.log(parseInt('abc123'), typeof parseInt('abc123'));
-			// parseFloat():float浮点数
+			// parseFloat():float浮点数可识别第一个.号
 			console.log(parseFloat('123.67'), typeof parseFloat('123.67'));
 			console.log(parseFloat(true), typeof parseFloat(true));  // parseFloat不能转换布尔类型
-			console.log(parseFloat('123.56.abc'), typeof parseFloat('123.56.abc'));
+			console.log(parseFloat('123.56.abc'), typeof parseFloat('123.56.abc')); // float浮点数可识别第一个.号
 			// +, -, -0等运算
 			console.log(+'500', typeof(+'500'));
 			console.log(-'500', typeof(-'500'));
