@@ -219,6 +219,28 @@
 			// 判断对象是否为数组对象
 			console.log(numbers instanceof Array);
 			console.log(Array.isArray(numbers));
+			
+			// 基本包装类型:Number String Boolean
+			var str1 = 'hello world';  // 字面量形式
+			var str2 = new String('hello world');  // 使用基本包装类型构造函数实现字符串
+			
+			console.log(str1);
+			console.log(str2);
+			
+			var number2 = Number('16'); // 类型转换
+			var number3 = new Number('16');  // 对象
+			
+			console.log(number2);  
+			console.log(number3);
+			
+			// String
+			// 字符串不可变性
+			var a = 'abc';
+			a = 'hello world';  // 内存中变量a先指向'abc',后指向'hello world'('abc'最终会被回收)
+			
+			// 创建字符串对象
+			var str = new String('hello');
+			console.log(str.length);
 		</script>
 	</head>
 	<body>
