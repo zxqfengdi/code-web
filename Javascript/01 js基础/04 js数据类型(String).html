@@ -82,11 +82,61 @@
 			console.log(str.toLowerCase());
 			
 			// str.repalce() str.split()
-			// replace(): 替换字符串的某些内容并返回替换后的字符串
-			// split(): 使用特定分隔符将字符串分割为字符数组
+			// str.replace(): 替换字符串的某些内容并返回替换后的字符串
+			// str.split(): 使用特定分隔符将字符串分割为字符数组
 			
 			// 字符串方法练习
-			// 
+			// 截取字符串"我爱中华人民共和国"，中的"中华"
+			var str = "我爱中华人民共和国";
+			console.log(str.substr(2, 2));
+			
+			// "abcoefoxyozzopp"查找字符串中所有o出现的位置
+			var str = "abcoefoxyozzopp";
+			var index = -1;
+			do {
+				index = str.indexOf('o', index + 1);
+				if (index !== -1) {
+					console.log(index);
+				}
+			} while (index !== -1)
+			
+			// 把字符串中所有的o替换成!
+			var str = "abcoefoxyozzopp";
+			var index = -1;
+			do {
+				index = str.indexOf('o', index + 1);
+				if (index !== -1) {
+					str = str.replace(str[index], '!');
+				}
+			} while (index !== -1)
+			console.log(str);
+			
+			// 把字符串中的所有空白去掉'   abc       xyz  a    123   '
+			// trim只能取出两端空白
+			// 思路一: 将字符串中空白字符替换为空字符串即可
+			var str = '   abc       xyz  a    123   ';
+			var test = str.split(' ');  // 将字符串使用空白符分割为字符串元祖
+			console.log(test);
+			console.log(test.join(''));
+			
+			// 获取url中?后面的内容，并转化成对象的形式。例如：http://www.itheima.com/login?name=zs&age=18&a=1&b=2
+			var str = 'http://www.itheima.com/login?name=zs&age=18&a=1&b=2';
+			var index = str.indexOf('?');
+			console.log(str.substr(index + 1));
+			
+			function getParams(url) {
+				var index = url.indexOf('?') + 1;
+				var params = url.substr(index);
+				var paramsArr = params.split('&');
+				var paramsObj = {};
+				
+				for (var i in paramsArr) {
+					var tmpParams = paramsArr[i].split('=');
+					paramsObj[tmpParams[0]] = tmpParams[1];
+				}
+				console.log(paramsObj)
+			}
+			getParams('http://www.itheima.com/login?name=zs&age=18&a=1&b=2');
 		</script>
 	</head>
 	<body>
