@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+		// DOM:文档对象模型，主要使用API对文档树的节点进行操作（文档存储在内存中，因此DOM操作在内存中进行）
+		// 文档节点：标签、属性、文本、注释等均可称为节点
+		// DOM常见操作：获取元素、对元素进行操作（设置属性或者调用方法）、动态创建元素、事件
+	</script>
+</head>
+<body>
+	<div id="main">hello</div>
+	<p>hello</p>
+	<p>world</p>
+	<p>中国</p>
+
+	<div id="father">
+		<div>中国</div>
+		<div>你好</div>
+	</div>
+	<div name="test">哈哈哈</div>
+	<div class="class01">加油！</div>
+	<script>
+        // 1 获取元素(文档从上往下执行，若获取元素时元素还没有加载出来，返回值为null；一般将script标签放到body结束标签之前)
+        // 01 根据id获取元素: document.getElementById('main')
+        var main = document.getElementById('main');
+        console.log(main);  // 输出对象，浏览器会进行特殊处理（输出元素）
+        console.log(typeof main);  // 返回值为一个对象
+		console.dir(main);  // 打印对象（对象的__proto__属性值即对象类型：HTMLDivElement）
+
+		// 02 根据标签名获取元素（获取多个元素集合，动态集合）
+		var ps = document.getElementsByTagName('p');
+		console.log(ps);
+		console.log(typeof ps);
+		console.dir(ps);  // 对象类型：HTMLCollection（集合）
+
+		// 遍历获取到的元素集合
+		for (var i = 0; i < ps.length; i++) {
+		    console.log(ps[i]);
+		    console.dir(ps[i]);
+		}
+
+		// 获取指定id的div元素里面的子div元素
+		var father = document.getElementById('father');
+		var divInFather = father.getElementsByTagName('div');
+
+		console.log(divInFather);
+
+		for (var i = 0; i < divInFather.length; i++) {
+		    console.log(divInFather[i]);
+		    console.dir(divInFather[i]);
+		}
+
+		// 03 根据标签name属性获取元素（不推荐使用，浏览器兼容问题(IEh和Opera浏览器同时会查找id属性也为值的元素)）
+		var test = document.getElementsByName('test');
+		console.log(test);
+
+		// 04 根据标签class属性获取元素(IE9之后支持)
+		var myclass = document.getElementsByClassName('class01');
+		console.log(myclass);
+
+		// 05 根据选择器获取元素（浏览器兼容问题）
+		var selectorEle = document.querySelector('.class01');  // 默认只获取第一个匹配到的元素
+		// var test = document.querySelectorAll('.class01')  获取所有匹配的元素
+		console.log(selectorEle);
+	</script>
+</body>
+</html>

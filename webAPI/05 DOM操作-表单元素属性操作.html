@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<input type="button" id="bt01" value="禁用文本框">
+	<input type="button" id="bt02" value="设置文本框的值">
+	<br>
+	<!-- disabled：禁用属性 -->
+	<input type="text" name="" id="text">
+
+
+	<script>
+		// 表单元素常用属性：type value disabled checked(复选框选中) selected(下拉菜单选中)
+
+		// 01 disabled属性：禁用
+		// 点击按钮禁用文本框
+		var bt01 = document.getElementById('bt01');
+
+		bt01.onclick = function () {
+			var text = document.getElementById('text');
+            // 当HTML标签的属性只有一个值时，对应的DOM对象的属性时为布尔类型（三个：disabled checked selected）
+            text.disabled = true;
+        };
+
+        var bt02 = document.getElementById('bt02');
+
+        bt02.onclick = function () {
+            var text = document.getElementById('text');
+            text.disabled = false;
+        };
+	</script>
+</body>
+</html>

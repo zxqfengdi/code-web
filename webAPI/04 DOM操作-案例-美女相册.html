@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		a {
+			text-decoration: none;
+			padding: 0 10px 0 0;
+		}
+	</style>
+</head>
+<body>
+	<h2>美女相册</h2>
+
+	<div id="image-gallery">
+		<a href="images/1.jpg" title="美女A">
+			<img src="images/1-small.jpg" width="100px" alt="美女1" />
+		</a>
+		<a href="images/2.jpg" title="美女B">
+			<img src="images/2-small.jpg" width="100px" alt="美女2" />
+		</a>
+		<a href="images/3.jpg" title="美女C">
+			<img src="images/3-small.jpg" width="100px" alt="美女3" />
+		</a>
+		<a href="images/4.jpg" title="美女D">
+			<img src="images/4-small.jpg" width="100px" alt="美女4" />
+		</a>
+	</div>
+
+	<img id="image" src="images/placeholder.png" alt="" width="450px">
+	<p id="des">选择一张图片</p>
+	<hr>
+	<div id="mybox">
+		我是一个div
+		<span>这是一个span</span>
+	</div>
+
+
+	<script>
+		// 点击照片时图片显示到下面占位图片位置
+		// 问题1：图片可被点击即外边包裹链接标签，点击后自动跳转，如何解决？
+		// 取消a标签的默认行为：跳转（return false）
+
+		// 01 获取所有点击的a标签
+		var imagegallery = document.getElementById('image-gallery');
+		var links = imagegallery.getElementsByTagName('a');
+
+		for (var i = 0; i < links.length; i++) {
+		    var link = links[i];  // link为每个a标签
+            // 02 a标签注册事件
+			link.onclick = function () {
+                // 04 占位处切换图片
+				var image = document.getElementById('image');
+				image.src = this.href;  // 若此处使用link.href会产生闭包
+
+                // // 05 更改p标签内容
+				var des = document.getElementById('des');
+				// des.textContent = this.title;
+				des.innerText = this.title;
+
+                // 03 取消a表标签的默认跳转行为
+			    return false;
+            }
+		}
+
+
+		// 特殊属性：innerText innerHTML textContent
+
+		// 获取属性
+		var mybox = document.getElementById('mybox');
+		console.dir(mybox);
+		// innerHTML: 获取标签内部内容（包括内部标签，原封不动保留）
+		console.log(mybox.innerHTML);
+
+		// innerText：获取标签内部内容（全部为文本内容，去掉换行与空白）
+		console.log(mybox.innerText);
+
+		// textContent：获取标签内部内容（全部为文本内容，保留换行与空白）
+		console.log(mybox.textContent);
+
+		// 修改属性内容
+		mybox.innerHTML = '<b>程序员</b>你好！';  // innerHTML会将内部HTML标签显示出来
+		mybox.innerText = '<b>程序员</b>你好！';  // 只是文本不会显示HTML标签
+
+		// 兼容性问题：innerText textContent
+		// chrome: innerText textContent均支持
+		// 新版火狐：innerText textContent均支持  旧版火狐：只支持textContent
+		// IE9: innerText textContent均支持 旧版IE：只支持innerText
+
+		// 兼容处理：实现过程（判断浏览器是否支持innerText textContent即查找属性是否存在）
+		function getInnerText(element) {
+			// 属性存在返回字符串'string'，不存在返回undefined
+			if (typeof element.innerText === 'string') {
+			    return element.innerText;
+			} else {
+			    return element.textContent;
+			}
+        }
+
+	</script>
+</body>
+</html>

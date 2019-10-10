@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script>
+		// 事件：何时执行何操作（触发-响应机制）
+		// 事件源：触发事件的元素
+		// 事件名称：事件类型（单击事件、）
+		// 事件处理函数：匿名函数执行的代码
+	</script>
+</head>
+<body>
+	<input type="button" value="点我" id="btn">
+	<div>我是div</div>
+	<hr>
+	<input type="button" value="点击切换图片" id="change-img">
+	<br>
+	<img src="images/a.jpg" alt="" id="mv">
+	
+	
+	<script>
+	    // 按钮注册事件
+		// 获取按钮元素
+		var btn01 = document.getElementById('btn');
+
+		// 按钮注册事件
+		btn01.onclick = function () {
+			alert('别点我，疼');
+        };
+
+        // div注册事件
+		var div = document.getElementsByTagName('div');  // 此处通过标签名获取是一个集合，使用索引获取目标元素
+		div[0].onclick = function () {
+			alert('我是一个div');
+        };
+
+		// 案例1：点击按钮切换图片
+		// 获取按钮
+		var btn02 = document.getElementById('change-img');
+		var mv = document.getElementById('mv');
+		// 注册事件
+	    var flag = 1;  // 1时为a.jpg图片，2时切换b.jpg
+		btn02.onclick = function () {
+			// 切换图片：更改图片src属性即可
+			if (flag === 1) {
+			    mv.src = 'images/b.jpg';
+			    flag = 2;
+			} else {
+			    mv.src = 'images/a.jpg';
+			    flag = 1;
+			}
+        };
+	</script>
+</body>
+</html>
