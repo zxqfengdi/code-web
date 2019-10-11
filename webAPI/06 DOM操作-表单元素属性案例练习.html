@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.username-bg {
+			background-color: yellow;
+		}
+		.password-bg {
+			background-color: pink;
+		}
+		.gray {
+			color: gray;
+		}
+		.black {
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="" id="username"><br>
+	<input type="password" name="" id="password"><br>
+	<input type="button" value="登录" id="btnLogin">
+	<hr>
+	<select name="" id="cities">
+		<option value="1">北京</option>
+		<option value="2">上海</option>
+		<option value="3">深圳</option>
+		<option value="4">杭州</option>
+		<option value="5">武汉</option>
+	</select>
+	<input type="button" id="setCity" value="设置">
+	<hr>
+	<input type="text" value="请输入搜索关键字" id="txtSearch" class="gray">
+	<input type="button" value="搜索" id="btnSearch">
+	
+	<script>
+        // 案例3：检测用户名密码（用户名3-6位，密码6-8位，否则高亮显示文本框）
+		var btnLogin = document.getElementById('btnLogin');
+
+		btnLogin.onclick = function () {
+			var userName = document.getElementById('username');
+			var passWord = document.getElementById('password');
+
+			// 判断用户名密码长度(文本框的输入内容使用value来获取，类型为字符串)
+			if (userName.value.length < 3 || userName.value.length > 6) {
+			    userName.className = 'username-bg';
+			    return;  // 不满足条件不执行登录
+			} else {
+			    userName.className = '';  // 满足条件，设置class属性值为空字符串
+			}
+
+			if (passWord.value.length < 6 || passWord.value.length > 8) {
+			    passWord.className = 'password-bg';
+			    return;
+			} else {
+			    passWord.className = '';
+			}
+
+			console.log('执行登录');
+        };
+
+		// 案例4：点击按钮随机选中下拉选项某一项
+		var setCity = document.getElementById('setCity');
+
+		setCity.onclick = function () {
+            var options = document.getElementsByTagName('option');
+			var randomNum = Math.floor(Math.random() * options.length);
+			// console.log(randomNum);
+			options[randomNum].selected = true;
+        };
+
+		// 案例5：搜索文本框(难点：如何判断文本框获取或者失去焦点)
+        // 当文本框获得焦点，如果文本框里的内容是"请输入搜索关键字' 清空文本框，并且让字体变为黑色 ---> onfocus: 获取焦点事件
+		var txtSearch = document.getElementById('txtSearch');
+		txtSearch.onfocus = function () {
+			if (this.value === '请输入搜索关键字') {
+			    this.value = '';
+			    this.className = 'black';
+			}
+        };
+
+		// 当文本框失去焦点，如果文本框里的内容为空  还原文本框里的文字，并且让字体变为灰色 ---> onblur：失去焦点事件
+		txtSearch.onblur = function () {
+            if (this.value === '' || this.value === '请输入搜索关键字') {
+                this.value = '请输入搜索关键字';
+                this.className = 'gray';
+            }
+        };
+	</script>
+</body>
+</html>

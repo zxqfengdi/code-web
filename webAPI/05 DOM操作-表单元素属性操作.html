@@ -10,7 +10,18 @@
 	<br>
 	<!-- disabled：禁用属性 -->
 	<input type="text" name="" id="text">
+	<hr>
 
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+	<input type="text" name=""><br>
+
+	<input id="bt03" type="button" value="获取文本框的值">
 
 	<script>
 		// 表单元素常用属性：type value disabled checked(复选框选中) selected(下拉菜单选中)
@@ -29,8 +40,44 @@
 
         bt02.onclick = function () {
             var text = document.getElementById('text');
-            text.disabled = false;
+            text.value = '哈哈哈哈';
         };
+
+        // 案例2：通过按钮设置文本框的值
+		// 页面加载完成给所有文本框赋值
+		var inputs = document.getElementsByTagName('input');  // 获取input标签集合
+
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];  // 遍历每个input标签进行类型判断
+            if (input.type === 'text') {
+                input.value = String(i);
+            }
+        }
+
+        // 此处也可使用选择器语法
+		// var inputs = document.querySelectorAll('input[type=text]');
+		// console.log(inputs);
+		// for (var i = 0; i < inputs.length; i++) {
+		//     var input = inputs[i];
+		//     input.value = i;
+		// }
+
+		// 点击按钮时获取所有文本框的值，并使用|分割输出(可使用字符串拼接再截取的方法：性能低)
+		var bt03 = document.getElementById('bt03');
+
+        bt03.onclick = function () {
+            var arr = [];
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];  // 遍历每个input标签进行类型判断
+                if (input.type === 'text') {
+                    arr[arr.length] = input.value;
+                    // arr.push(input.value);
+                }
+            }
+            var str = arr.join('|');
+            console.log(str);
+        };
+
 	</script>
 </body>
 </html>
