@@ -3,7 +3,63 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<style>
+			.cls {
+				background-color: pink;
+			}
+			.mydiv {
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+			}
+		</style>
 	</head>
 	<body>
+		<input type="button" value="点我" id="btn1"><br>
+		<input type="text" name="" id="txt">
+		<hr>
+		<input type="button" value="点我" id="btn2"><br>
+		<div id="box"></div>
+		
+		<script>
+			// 样式操作:即在事件处理函数中对元素属性进行操作
+			
+			// 将根据id获取元素封装为函数(参数为传入的id字符串)
+			function my$(id) {
+				return document.getElementById(id);
+			}
+			
+			// 01 提前写好样式,使用元素对象的class属性进行操作改变样式
+			// my$('btn1').onclick = function () {
+			// 	my$('txt').className = 'cls';
+			// };
+			
+			// 02 使用style属性(DOM=对象的style属性操作元素样式)
+			my$('btn1').onclick = function () {
+				var txt = my$('txt');
+				console.log(txt.style);  // DOM对象的style属性返回值为CSSStyleDeclaration
+				// 样式属性 background-color  对应DOM对象style属性的backgroundColor
+				txt.style.backgroundColor = 'pink';
+			};
+			
+			// 从上面可以看出:设置样式属性可使用DOM对象的clssName属性或者style属性
+			// 使用区别:设置样式较多时,使用className较方便,需提前写好样式进行调用(若使用style属性可能需要多条语句)
+			// 设置样式较少时,使用style属性比较方便
+			
+			// 案例:点击按钮更改div样式
+			// 01 className属性操作
+			// my$('btn2').onclick = function () {
+			// 	my$('box').className = 'mydiv';
+			// };
+			
+			// 02 style属性操作
+			my$('btn2').onclick = function () {
+				var box = my$('box');
+				// 设置宽高属性必须带单位,否则出错
+				box.style.width = '100px';
+				box.style.height = '100px';
+				box.style.backgroundColor = 'pink';
+			};
+		</script>
 	</body>
 </html>

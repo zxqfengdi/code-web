@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.nodeSmall {
+				width: 50px;
+				height: 50px;
+				/* 精灵图 */
+				background: url(images/bgs.png) no-repeat -159px -51px;
+				position: fixed;
+				right: 10px;
+				top: 40%;
+			}
+			.erweima {
+				position: absolute;
+				top: 0;
+				left: -150px;
+			}
+			.hide {
+			    display: none;
+			}
+			.show {
+				display: block;
+			}
+			input {
+				outline: none;
+			}
+			.color {
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+			}
+			.color-position {
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="关灯" id="btn1"><br>
+		<hr>
+		<div class="nodeSmall" id="node_small">
+		    <div class="erweima hide" id="er">
+		        <img src="images/456.png" alt=""/>
+		    </div>
+		</div>
+		<hr>
+		<input type="text"><br>
+		<input type="text"><br>
+		<input type="text"><br>
+		<input type="text"><br>
+		<input type="text"><br>
+		<input type="text"><br>
+		<hr>
+		<input type="button" value="点我" id="btn2"><br>
+		<div class="color" id="mydiv"></div>
+		<hr>
+		<ul id="mv">
+			<li>西施</li>
+			<li>貂蝉</li>
+			<li>王昭君</li>
+			<li>杨玉环</li>
+			<li>芙蓉姐姐</li>
+		</ul>
+		
+		<!-- 导入外部js文件，使用内部定义函数 -->
+		<script type="text/javascript" src="common.js"></script>  
+		<script>
+			// 案例1:点击按钮开关灯(更换背景颜色)
+			var isOpen = true;  // 设置默认开灯
+			my$('btn1').onclick = function () {
+				if (isOpen) {
+					this.value = '开灯';
+					document.body.style.backgroundColor = 'black';
+					isOpen = false;
+				} else {
+					this.value = '关灯';
+					document.body.style.backgroundColor = 'white';
+					isOpen = true;
+				}
+			};
+			
+			// 案例2: 鼠标移动到图片上面显示二维码,离开消失
+			// 鼠标移入事件:onmouseover
+			// 鼠标移出事件:onmouseout
+			my$('node_small').onmouseover = function () {
+				// className属性
+				// my$('er').className = 'erweima show';
+				// 字符串方法
+				// my$('er').className = my$('er').className.replace('hide', 'show');
+				// style属性
+				my$('er').style.display = 'block';
+			};
+			
+			my$('node_small').onmouseout = function () {
+				// className属性
+				// my$('er').className = 'erweima hide';
+				// 字符串方法
+				// my$('er').className = my$('er').className.replace('show', 'hide');
+				my$('er').style.display = 'none';
+			};
+			
+			// 案例3: 多个文本框,当文本框获取输入焦点,背景颜色高亮
+			var inputs = document.getElementsByTagName('input');
+			for (var i = 0; i < inputs.length; i++ ){
+				var input = inputs[i];
+				if (input.type !== 'text') {
+					continue;
+				}
+				// 为所有输入框绑定输入焦点事件
+				input.onfocus = function () {
+					// 取消所有输入框高亮效果
+					for (var i = 0; i < inputs.length; i++) {
+						var input = inputs[i];
+						if (input.type !== 'text') {
+							continue;
+						}
+						input.style.backgroundColor = '';
+					}
+					// 设置当前文本框高亮显示
+					this.style.backgroundColor = 'lightgray';
+				};
+			}
+			
+			// 案例4: 点击按钮设置div的大小和位置
+			my$('btn2').onclick = function () {
+				// className属性
+				// my$('mydiv').className = 'color-position';
+				
+				// style属性
+				my$('mydiv').style.width = '200px';
+				my$('mydiv').style.height = '200px';
+				my$('mydiv').style.margin = '100px auto';
+			};
+			
+			// 案例5:隔行变色和高亮显示
+			// 隔行变色:遍历所有li标签,判断奇数或者偶数行,设置背景颜色
+			var mv = document.getElementById('mv');
+			var lis = mv.getElementsByTagName('li');
+			
+			for (var i = 0; i < lis.length; i++) {
+				var li = lis[i];
+				if (i % 2 == 0) {
+					// 由于索引关系,实际为奇数行
+					li.style.backgroundColor = 'green';
+				} else {
+					li.style.backgroundColor = 'red';
+				}
+			}
+			
+			// 高亮显示:当鼠标移动到li标签上当前li标签背景高亮
+			for (var i = 0; i < lis.length; i++) {
+				var li = lis[i];
+				var bg;
+				// 鼠标移入事件
+				li.onmouseover = function () {
+					bg = this.style.backgroundColor;  // 记录li当前背景
+					this.style.backgroundColor = 'yellow';
+				};
+				// 鼠标移出事件
+				li.onmouseout = function () {
+					this.style.backgroundColor = bg;
+				};
+			}
+		</script>
+	</body>
+</html>

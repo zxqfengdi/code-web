@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#container {
+				width: 300px;
+				height: 200px;
+				border: 1px solid #ccc;
+				margin: 100px auto;
+			}
+			.hd {
+				height: 40px;
+			}
+			.hd span {
+				display: inline-block;
+				background-color: pink;
+				text-decoration: none;
+				color: black;
+				width: 70px;
+				text-align: center;
+				line-height: 40px;
+				cursor: pointer;
+			}
+			.hd span.current {
+				background-color: purple;
+			}
+			.bd div {
+				height: 160px;;
+				background-color: purple;
+				display: none;
+			}
+			.bd .current {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div class="hd" id="hd">
+				<span class="current">体育</span>
+				<span>新闻</span>
+				<span>娱乐</span>
+				<span>综合</span>
+			</div>
+			<div class="bd" id="bd">
+				<div class="current">我是体育模块</div>
+				<div>我是新闻模块</div>
+				<div>我是娱乐模块</div>
+				<div>我是综合模块</div>
+			</div>
+			
+			<script src="common.js"></script>
+			<script>
+				// tab栏切换
+				var hd = my$('hd');
+				var spans = hd.getElementsByTagName('span');
+				var bd = my$('bd');
+				var divs = bd.getElementsByTagName('div');
+				// 遍历所有span标签绑定鼠标移入事件
+				for (var i = 0; i < spans.length; i++) {
+					var span = spans[i];
+					span.setAttribute('index', i);
+					// 鼠标移入绑定事件
+					span.onmouseover = fn;
+				}
+				
+				// 鼠标移入事件处理封装为函数
+				function fn () {
+					// 鼠标经过,当前tab栏高亮
+					for (var i = 0; i < spans.length; i++) {
+						var span = spans[i];
+						span.className = '';
+					}
+					this.className = 'current';
+					
+					for (var i = 0; i < divs.length; i++) {	
+						var div = divs[i];
+						div.className = '';
+					}
+					// 通过自定义属性获取当前鼠标移入标签的索引,使用其值作为目标div的索引设置其样式
+					var index = parseInt(this.getAttribute('index'));
+					divs[index].className = 'current';
+				};
+			</script>
+		</div>
+	</body>
+</html>

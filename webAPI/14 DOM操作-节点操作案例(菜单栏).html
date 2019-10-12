@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style: none;
+			}
+			a {
+				text-decoration: none;
+			}
+			
+			#menu {
+				margin: 30px 50px;
+				overflow: hidden;
+			}
+			#menu ul li {
+				float: left;
+				margin-right: 5px;
+			}
+			#menu li a {
+				display: block;
+				width: 60px;
+				line-height: 25px;
+				background-color: beige;
+				text-align: center;
+			}
+			#menu li.current a {
+				background-color: burlywood;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+		    <ul>
+				<!-- href="javascript:void(0)：：之前代表协议，href将当前浏览器地址栏地址更换，此处为执行该语句（取消a链接的默认跳转行为） -->
+				<!-- void 是运算符   
+				执行void后面的表达式，并始终返回undefined -->
+				<li class="current"><a href="javascript:void(0)">首页</a></li>
+				<li><a href="javascript:undefined">播客</a></li>
+				<li><a href="javascript:void(0)">博客</a></li>
+				<li><a href="javascript:void(0)">相册</a></li>
+				<li><a href="javascript:void(0)">关于</a></li>
+				<li><a href="javascript:void(0)">帮助</a></li>
+		    </ul>
+		</div>
+		
+		<script src="common.js"></script>  
+		<script type="text/javascript">
+			// 实现效果:鼠标移动到某个菜单,当前项高亮显示,其他项不变
+			var menu = my$('menu');
+			var lis = getFirstElementChild(menu).children;  // 获取ul节点里面的所有li节点
+			
+			for (var i = 0; i < lis.length; i++) {
+				var li = lis[i];
+				
+				li.onclick = fn;
+			}
+			
+			function fn () {
+				for (var i = 0; i < lis.length; i++) {
+					var li = lis[i];
+					li.className = '';
+				}
+				this.className = 'current';
+			};
+		</script>
+	</body>
+</html>

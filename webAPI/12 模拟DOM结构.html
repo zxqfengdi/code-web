@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+		<p id="p">你好</p>
+		
+		<script>
+			// DOM:文档树 --》 元素节点、属性节点、文本节点、注释节点
+			// 创建具有相同属性的对象:构造函数
+			console.dir(document);
+			
+			var box = document.getElementById('box');
+			console.dir(box);
+			
+			var p = document.getElementById('p');
+			console.dir(p);
+			
+			// 使用构造函数描述节点(模仿内部实现)
+			function Node(options) {
+				// 实际DOM对象没有设置某个属性值为空字符串''(需判断)
+				// if-else实现
+				// if (options.className) {
+				// 	this.className = options.className;
+				// } else {
+				// 	this.className = '';
+				// }
+				// 三元运算符实现
+				// this.className = options.className ? options.className : '';
+				// ||:或运算符设置属性的默认值(一真则真，同假则假)
+				this.className = options.className || '';  // class属性
+				this.id = options.id || '';  // id属性
+				// 节点相关属性
+				this.nodeName = options.nodeName || '';  // nodeName:节点名称
+				this.nodeType = options.nodeType || 1; // 节点类型()
+				this.nodeValue = options.nodeValue || null;  // 节点的值(元素节点始终为null)
+				
+				// 记录子元素节点
+				this.children = options.children || [];
+				// ||原理: 两边为布尔类型,一真则真，同假则假
+				// 其他类型：判断第一个参数,若第一个参数转换为布尔值为true,则直接返回第一个参数(返回true)
+				// 若第一个参数转换布尔值为false,则直接返回第二个值
+				
+			}
+			// 创建节点对象
+			var o = new Node({
+				className: 'cls'  // 不传className属性结果为undefined(实际DOM对象没有设置某个属性值为空字符串'')
+			});
+			console.dir(o);
+			
+			// 创建HTML节点
+			var html = new Node({
+				nodeName: 'html'
+			});
+			console.dir(html);
+			
+			// 创建head,body节点,并放置到html节点中
+			var head = new Node({
+				nodeName: 'head'
+			});
+			html.children.push(head);
+			
+			var body = new Node({
+				nodeName: 'body'
+			});
+			html.children.push(body);
+			
+			// 创建div p节点,并添加到body节点内
+			var div = new Node({
+				nodeName: 'div'
+			});
+			var p = new Node({
+				nodeName: 'p'
+			});
+			body.children.push(div);
+			body.children.push(p);
+			
+			console.log(html);
+		</script>
+	</body>
+</html>

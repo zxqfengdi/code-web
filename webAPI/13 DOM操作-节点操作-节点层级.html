@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<span>span</span>
+			<p>hello</p>
+			<!-- 这是一个注释 -->
+		</div>
+		<hr>
+		<ul id="mv">
+			<li>西施</li>
+			<li>貂蝉</li>
+			<li>王昭君</li>
+			<li>杨玉环</li>
+			<li>杨婉莹</li>
+		</ul>
+		<hr>
+		<div id="box2">
+			<div>这是一个广告图片</div>
+			<ul>
+				<li>这是一个列表</li>
+			</ul>
+			<span>说明性文字</span>
+		</div>
+		<hr>
+		<div id="box3">
+		    <div>这是一个区域1</div>
+		    <div>这是一个区域2</div>
+		    <div id="c3">这是一个区域3</div>
+		    <div>这是一个区域4</div>
+		    <div>这是一个区域5</div>
+		  </div>
+		
+		<script>
+			
+			// 01 节点分类:元素节点、属性节点、文本节点、注释节点
+			/* 02 节点属性:nodeName nodeType nodeValue
+				nodeName: 节点名称
+				nodeType:节点类型(元素节点 1  属性节点 2  文本节点 3 注释节点 8)
+				nodeVlue:节点值(元素节点值为null)
+			*/
+			/* 03 节点层级
+				父节点: parentNode  只有一个
+				子节点: childNodes  多个
+				子元素节点: children
+			*/
+		   
+			// box对象是一个元素节点: nodeName: "DIV" nodeType: 1  nodeValue: null
+			var box = document.getElementById('box');
+			console.dir(box);
+
+			console.log(box.parentNode);
+			console.log(box.childNodes);
+			console.log(box.children);  // 直接获取子元素节点
+			
+			
+			// 找出节点内的元素节点
+			for (var i = 0; i < box.childNodes.length; i++) {
+				var node = box.childNodes[i];
+				// 判断为元素节点输出
+				if (node.nodeType === 1) {
+					console.log(node);
+				}
+			}
+			
+			// 案例:隔行变色
+			var mv = document.getElementById('mv');
+			var lis = mv.children;  // 使用children属性获取ul内部的所有li元素节点(之前使用的是getElementsByTagName)
+			
+			for (var i = 0; i < lis.length; i++) {
+				var li = lis[i];
+				if (i % 2 === 0) {
+					li.style.backgroundColor = 'green';
+				} else {
+					li.style.backgroundColor = 'red';
+				}
+			}
+			
+			for (var i = 0; i < lis.length; i++) {
+				var li = lis[i];
+				var bg;
+				li.onmouseover = function () {
+					bg = this.style.backgroundColor;
+					this.style.backgroundColor = 'yellow';
+				};
+				li.onmouseout = function () {
+					this.style.backgroundColor = bg;
+				};
+			}
+			
+			// 第一个节点和最后一个节点: firstChild  lastChild (获取的是节点，没有子节点返回null)
+			var box2 = document.getElementById('box2');
+			console.log(box2.firstChild);
+			console.log(box2.lastChild);
+			
+			// 第一个元素和最后一个元素：firstElementChild lastElementChild (兼容性问题，IE9后支持)
+			console.log(box2.firstElementChild);
+			console.log(box2.lastElementChild);
+			
+			
+			// 兼容性问题处理
+			// 获取第一个子元素
+			function getFirstElementChild(element) {
+				var node;
+				var nodes = element.childNodes;
+				var i = 0;
+				// 正序遍历
+				while (node = nodes[i++]) {
+					if (node.nodeType === 1) {
+						return node;
+					}
+				}
+				return null;
+			}
+			console.log(getFirstElementChild(box2));
+			
+			// 获取最后一个子元素
+			function getLastElementChild(element) {
+				var node;
+				var nodes = element.childNodes;
+				var i = nodes.length - 1;
+				// 倒序遍历
+				while (node = nodes[i--]) {
+					if (node.nodeType === 1) {
+						return node;
+					}
+				}
+				return null;
+			}
+			console.log(getLastElementChild(box2));
+			
+			// 兄弟节点
+			// 获取上一个或者下一个兄弟节点: previousSibling  nextSibling  (previous:前面 sibling:兄弟姐妹)
+			// 获取上一个或者写一个兄弟元素: previousElementSibling nextElementSibling (兼容性问题：IE9之后支持)
+			var c3 = document.getElementById('c3');
+			console.log(c3.previousSibling);
+			console.log(c3.nextSibling);
+			
+			console.log(c3.previousElementSibling);
+			console.log(c3.nextElementSibling);
+			
+			// 兼容性问题
+			// 获取当前元素的前一个兄弟元素节点
+			function getPreviousElementSibling(element) {
+				var el = element;
+				while (el = el.previousSibling) {
+					if (el.nodeType === 1) {
+						return el;
+					}
+				}
+				return null;
+			}
+			console.log(getPreviousElementSibling(c3));
+			// 获取当前元素的后一个兄弟元素节点
+			function getNextElementSibling(element) {
+				var el = element;
+				while (el = el.nextSibling) {
+					if (el.nodeType === 1) {
+						return el;
+					}
+				}
+				return null;
+			}
+			console.log(getNextElementSibling(c3));
+		</script>
+	</body>
+</html>
