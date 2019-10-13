@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>标题</h2>
+		<input type="button" value="按钮" id="btn">
+		<hr>
+		<input type="button" value="按钮" id="btn2">
+		<div id="box"></div>
+		<hr>
+		<input type="button" value="按钮" id="btn3">
+		<div id="box2"></div>
+		<script src="common.js"></script>
+		<script>
+			// 创建元素的方式: document.write  element.innerHTML  document.createElement
+			
+			// document.write: 文档对象写入(事件中使用会将之前的整个页面覆盖掉：使用较少)
+			var btn = document.getElementById('btn');
+			btn.onclick = function () {
+				document.write('hello <p>world</p>');
+			};
+			
+			
+			// element.innerHTML:属性赋值(效率问题：每次生成元素浏览器会重新绘制DOM树)
+			var btn2 = document.getElementById('btn2');
+			var box = document.getElementById('box');
+			btn2.onclick = function () {
+				box.innerHTML = 'hello <p>world</p>';
+			};
+			
+			// 案例1:element.innerHTML实现点击按钮动态生成列表,鼠标移入高亮
+			// var datas = ['西施', '貂蝉', '嫦娥', '雷军'];
+			// var btn3 = document.getElementById('btn3');
+			
+			// btn3.onclick = function () {
+			// 	var box2 = document.getElementById('box2');
+				
+			// 	box2.innerHTML = '<ul>';
+				
+			// 	for (var i = 0; i < datas.length; i++) {
+			// 		var data = datas[i];
+			// 		// box2.innerHTML = box2.innerHTML + '<li>' + data + '</li>';
+			// 		box2.innerHTML += '<li>' + data + '</li>';
+			// 	}
+				
+			// 	box2.innerHTML += '</ul>'
+			// };
+			
+			// 优化1: 使用字符串拼接方法,最后使用innerHTML属性赋值,只进行一次DOM树绘制(但是字符串为不可变对象，拼接会生成新对象，效率不高)
+			// var datas = ['西施', '貂蝉', '嫦娥', '雷军'];
+			// var btn3 = document.getElementById('btn3');
+			
+			// btn3.onclick = function () {
+			// 	var box2 = document.getElementById('box2');
+			// 	var html = '<ul>';
+				
+			// 	for (var i = 0; i < datas.length; i++) {
+			// 		var data = datas[i];
+			// 		// box2.innerHTML = box2.innerHTML + '<li>' + data + '</li>';
+			// 		html += '<li>' + data + '</li>';
+			// 	}
+				
+			// 	html += '</ul>'
+			// 	box2.innerHTML = html;
+			// };
+			
+			// 优化2:数组方式
+			// var datas = ['西施', '貂蝉', '嫦娥', '雷军'];
+			// var btn3 = document.getElementById('btn3');
+			// var box2 = document.getElementById('box2');
+			
+			// btn3.onclick = function () {
+			// 	var arr = [];
+			// 	arr.push('<ul>');
+				
+			// 	for (var i = 0; i < datas.length; i++) {
+			// 		var data = datas[i];
+			// 		arr.push('<li>' + data + '</li>');
+			// 	}
+				
+			// 	arr.push('</ul>');
+			// 	box2.innerHTML = arr.join('');
+				
+			// 	// 只有当li标签生成完成之后,才能实现鼠标移入高亮效果
+			// 	var ul = getFirstElementChild(box2);
+			// 	var lis = ul.children;
+				
+			// 	for (var i = 0; i < lis.length; i++) {
+			// 		var li = lis[i];
+					
+			// 		li.onmouseover = fn;
+			// 	}
+			// 	// 高亮效果封装为函数
+			// 	function fn () {
+			// 		for (var i = 0; i < lis.length; i++) {
+			// 			var li = lis[i];
+			// 			li.style.backgroundColor = '';
+			// 		}
+			// 		this.style.backgroundColor = 'green';
+			// 	}
+			// };
+			
+			// document.createElement: 内存中创建一个元素对象,未放到DOM树里面
+			// var box2 = document.getElementById('box2');
+			// var p = document.createElement('p');
+			// p.innerText = 'hello';
+			// p.style.color = 'red';
+			
+			// 将创建的元素对象放到DOM树内
+			// box2.appendChild(p);  // 为当前元素添加一个子元素(放在最后)
+			
+			// 案例2：document.createElement实现动态创建列表,鼠标移入高亮效果
+			var datas = ['西施', '貂蝉', '嫦娥', '雷军'];
+			var btn3 = document.getElementById('btn3');
+			var box2 = document.getElementById('box2');
+			
+			btn3.onclick = function () {
+				var ul = document.createElement('ul');  // 创建ul元素
+				box2.appendChild(ul);  // 追加ul元素
+				
+				for (var i = 0; i < datas.length; i++) {
+					var data = datas[i];
+					
+					var li = document.createElement('li');  // 循环创建li元素,设置其文本属性
+					li.innerText = data;  // 兼容问题
+					
+					ul.appendChild(li);  // 追加li元素到ul元素内部
+					
+					// 鼠标移入高亮效果,给li注册事件
+					li.onmouseover = LiMouseOver;
+					li.onmouseout = LiMouseOut;
+				}
+				
+				// 高亮效果封装为函数
+				function LiMouseOver () {
+					this.style.backgroundColor = 'green';
+				}
+				function LiMouseOut () {
+					this.style.backgroundColor = '';
+				}
+			};
+		</script>
+		<!-- document.write使用场景 -->
+		<a id="ibangkf" href="http://www.ibangkf.com">网站客服</a>
+		<script type="text/javascript" src="http://c.ibangkf.com/i/c-xxxzzzz123.js"></script>
+	</body>
+</html>

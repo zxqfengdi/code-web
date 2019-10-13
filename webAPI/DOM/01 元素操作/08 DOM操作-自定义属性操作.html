@@ -21,8 +21,10 @@
 
         // 设置自定义属性的值(属性名，属性值)
 		box.setAttribute('age', '25');  // 已有属性为修改
-		box.setAttribute('class', 'test');  // 没有属性为新增
-
+		console.log(box.getAttribute('age'));
+		box.setAttribute('hello', 'test');  // 没有属性为新增
+		console.log(box.getAttribute('hello'));
+		
 		// 删除自定义属性
 		box.removeAttribute('class');
 	</script>

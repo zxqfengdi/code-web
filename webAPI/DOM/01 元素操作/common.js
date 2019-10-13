@@ -15,6 +15,16 @@ function getInnerText(element) {
 	}
 }
 
+// 设置元素文本内容
+
+function setInnerText(element, content) {
+	if (typeof element === 'string') {
+		element.innerText = content;
+	} else {
+		element.textContent = content;
+	}
+}
+
 // 获取元素的第一个子元素
 
 function getFirstElementChild(element) {

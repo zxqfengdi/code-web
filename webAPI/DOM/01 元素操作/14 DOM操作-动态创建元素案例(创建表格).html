@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box table {
+				border-collapse: collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		
+		<script src="common.js"></script>
+		<script type="text/javascript">
+			
+			// 模拟数据
+			    var datas = [
+			      {name: 'zs', subject: '语文', score: 90},
+			      {name: 'ls', subject: '数学', score: 80},
+			      {name: 'ww', subject: '英语', score: 99},
+			      {name: 'zl', subject: '英语', score: 100},
+			      {name: 'xs', subject: '英语', score: 60},
+			      {name: 'dc', subject: '英语', score: 70}
+			    ];
+				
+			// 表头数据
+			var headDatas = ['姓名', '科目', '成绩', '操作'];
+				
+			// 获取div
+			var box = my$('box');
+
+			// 创建表格
+			var table = document.createElement('table');
+			box.appendChild(table)
+			table.border = '1px';
+			table.width = '400px';
+			
+			// 创建表头
+			var thead = document.createElement('thead');
+			table.appendChild(thead);
+			
+			var tr = document.createElement('tr');
+			thead.appendChild(tr);
+			tr.style.height = '40px';
+			tr.style.backgroundColor = 'lightgray';
+			
+			for (var i = 0; i < headDatas.length; i++) {
+				var th = document.createElement('th');
+				tr.appendChild(th);
+				setInnerText(th, headDatas[i]);
+			}
+			
+			// 表格数据
+			var tbody = document.createElement('tbody');
+			tbody.style.textAlign = 'center';  // 内容居中
+			table.appendChild(tbody);
+			
+			for (var i = 0; i < datas.length; i++) {
+				var tr = document.createElement('tr');
+				tbody.appendChild(tr);
+				
+				for (var j in datas[i]) {
+					var td = document.createElement('td');
+					tr.appendChild(td);
+					setInnerText(td, datas[i][j]);
+				}
+				
+				// 添加操作列(链接)
+				var td = document.createElement('td');
+				tr.appendChild(td);
+				
+				var link = document.createElement('a');
+				td.appendChild(link);
+				link.href = 'javascript: void(0)';
+				setInnerText(link, '删除');
+				
+				// link点击事件(删除本行)
+				link.onclick = onClick;
+			}
+			// link点击事件函数封装
+			function onClick() {
+				var tr = this.parentNode.parentNode; //获取所在的tr行
+				tbody.removeChild(tr);
+				
+				return false;
+			};
+		</script>
+	</body>
+</html>

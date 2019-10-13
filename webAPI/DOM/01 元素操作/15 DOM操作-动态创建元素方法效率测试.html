@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			var startTime = +new Date();
+			
+			// innerHTML方法测试:1250ms
+			// for (var i = 0; i < 1000; i++) {
+			// 	document.body.innerHTML += '<div style="width:100px; height:2px; border:1px solid blue;"></div>';
+			// }
+			
+			// innerHTML数组方式:3ms
+			// var arr = [];
+			// for (var i = 0; i < 1000; i++) {
+			// 	arr.push('<div style="width:100px; height:2px; border:1px solid blue;"></div>');
+			// }
+			// document.body.innerHTML = arr.join('');
+			
+			// document.createElement()方式: 6ms  (优点：结构清晰)
+			for (var i = 0; i < 1000; i++) {
+				var div = document.createElement('div');
+				div.style.width = '100px';
+				div.style.height = '2px';
+				div.style.border = '1px solid blue';
+			}
+			
+			var stopTime = +new Date();
+			console.log(stopTime - startTime);
+		</script>
+	</body>
+</html>
