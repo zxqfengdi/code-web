@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		    #box1 {
+		      width: 300px;
+		      height: 300px;
+		      background-color: red;
+		    }
+		
+		    #box2 {
+		      width: 200px;
+		      height: 200px;
+		      background-color: green;
+		    }
+		
+		    #box3 {
+		      width: 100px;
+		      height: 100px;
+		      background-color: blue;
+		    }
+		  </style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="box2">
+				<div id="box3"></div>
+			</div>
+		</div>
+		
+		
+		<script src="common.js"></script>
+		<script type="text/javascript">
+			// target.addEventListener(type, listener[, useCapture])
+			// addEventListener中:this参数指向当前的事件源
+			// useCapsure参数作用:布尔值,默认为false
+			
+			var box1 = my$('box1');
+			var box2 = my$('box2');
+			var box3 = my$('box3');
+			
+			// box1.addEventListener('click', function () {
+			// 	console.log('box1');
+			// })
+			// box2.addEventListener('click', function () {
+			// 	console.log('box2');
+			// })
+			// box3.addEventListener('click', function () {
+			// 	console.log('box3');
+			// })
+			
+			// 循环注册事件
+			var arr = [box1, box2, box3];
+			
+			// for (var i = 0; i < arr.length; i++) {
+			// 	arr[i].addEventListener('click', function () {
+			// 		console.log(this.id);
+			// 	}, false);
+			// }
+			
+			// 事件冒泡: useCapsure参数为false时为事件冒泡(由当前节点向父节点触发事件，由内向外进行事件传播：冒泡型事件传播)
+			
+			// 事件捕获: useCapsure参数为true时为事件捕获(从根节点内部进行事件传播：捕获型事件传播)
+			// for (var i = 0; i < arr.length; i++) {
+			// 	arr[i].addEventListener('click', function () {
+			// 		console.log(this.id);
+			// 	}, true);
+			// }
+			
+			// dom标准事件流的触发先后顺序为：先捕获再冒泡，即当触发dom事件时，会先进行事件捕获(捕获型事件传播)，捕获到事件源执行事件之后进行事件冒泡(冒泡型事件传播)
+			
+			// 事件的三个阶段: 
+			// 阶段一: 捕获阶段--> 从外向内进行事件捕获直到触发该事件的事件源(捕获型事件传播)
+			// 阶段二: 执行阶段--> 执行该事件源触发的事件
+			// 阶段三: 事件冒泡--> 从事件源由内向外进行事件冒泡(冒泡型事件传播)
+			
+			// onclick:只有事件冒泡(点击box3事件传播顺序：box3 box2 box1 body document)
+			for (var i = 0; i < arr.length; i++) {
+				arr[i].onclick = function () {
+					console.log(this.id);
+				};
+			}
+			
+			document.body.onclick = function () {
+				console.log('body');
+			};
+			
+			document.onclick = function () {
+				console.log('document');
+			};
+			
+			// attachEvent('onclick', function()) : 只有事件冒泡
+		</script>
+	</body>
+</html>

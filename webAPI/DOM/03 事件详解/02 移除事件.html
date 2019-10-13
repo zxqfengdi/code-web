@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn">
+		
+		<script src="common.js"></script>
+		<script type="text/javascript">
+			var btn = my$('btn');
+			// btn.onclick = function () {
+			// 	alert("hello world");
+			// 	// 移除事件:事件只执行一次
+			// 	btn.onclick = null;
+			// };
+			
+			// 若想要移除事件,注册事件的时候不能使用匿名函数
+			// btn.addEventListener('click', function () {
+			// 	alert('hello world');
+				
+			// 	// 移除事件
+			// 	btn.removeEventListener('click', )
+			// })
+			
+			// function btnOnclick() {
+			// 	alert('hello world');
+			// 	// 移除事件
+			// 	btn.removeEventListener('click', btnOnclick);
+			// }
+			// // 注册事件
+			// btn.addEventListener('click', btnOnclick);
+			
+			
+			// function btnOnclick() {
+			// 	alert('hello world');
+			// 	// 移除事件
+			// 	btn.detachEvent('onclick', btnOnclick);
+			// }
+			
+			// btn.attachEvent('onclick', btnOnclick);
+			
+			// 移除事件的兼容性处理
+			function removeEventListener(element, eventName, fn) {
+				if (element.removeEventListener) {
+					element.removeEventListener(eventName, fn)
+				} else if (element.detachEvent) {
+					element.detachEvent('on' + eventName, fn)
+				} else {
+					element['on' + eventName] = fn;
+				}
+			}
+		</script>
+	</body>
+</html>

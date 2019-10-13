@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			select {
+				width: 200px;
+				height: 200px;
+				background-color: #33cccc;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<select id="all" multiple="multiple">
+			<option value ="">苹果</option>
+			<option value ="">橘子</option>
+			<option value ="">香蕉</option>
+			<option value ="">西瓜</option>
+			<option value ="">草莓</option>
+			<option value ="">哈密瓜</option>
+		</select>
+		
+		<input type="button" value=">>" id="btn1">
+		<input type="button" value=">" id="btn2">
+		<input type="button" value="<" id="btn3">
+		<input type="button" value="<<" id="btn4">
+		
+		<select id="select" multiple="multiple"></select>
+		
+		<script src="common.js"></script>
+		<script type="text/javascript">
+			var all = my$('all');
+			var select = my$('select');
+			
+			// 按钮1绑定事件
+			my$('btn1').onclick = function () {
+				// children属性是一个动态更新属性(children属性在循环过程执行appendChild()后会发生变化，内部子元素索引也会发生变化)
+				// for (var i = 0; i < all.children.length; i++) {
+				// 	var option = all.children[i];
+				// 	select.appendChild(option);
+				// }			
+				// 解决思路一:反向遍历,内部元素索引不会发生变化(元素顺序发生变化)
+				// var len = all.children.length;
+				
+				// for (var i = len - 1; i >= 0; i--) {
+				// 	var option = all.children[i];
+				// 	select.appendChild(option);
+				// }
+				
+				// 解决思路:即使内部索引发生变化每次只取索引为0的即可(即第一项),但是children动态集合发生变化(当i自增到大于children.length时就会停止训话)
+				// 解决办法:提前获取children完整长度
+				// var len = all.children.length;
+
+				// for (var i = 0; i < len; i++) {
+				// 	var option = all.children[0];
+				// 	select.appendChild(option);
+				// }	
+				
+				// innerHTML的方式移动: 缺点:此方式移动,内部元素定义的事件会丢失，会发生内存泄漏(因为innerHTML获取的只是包含标签的文本字符串)
+				select.innerHTML = all.innerHTML;
+				all.innerHTML = '';  // 清除内容
+			};
+			
+			// 按钮2绑定事件
+			my$('btn2').onclick = function () {
+				var arr = [];
+				// 将选中的元素添加到数组中
+				for (var i = 0; i < all.children.length; i++) {
+					var option = all.children[i];
+					if (option.selected) {
+						arr.push(option);
+						option.selected = false;
+					}
+				}
+				
+				// 将数组中元素移动
+				for (var i = 0; i < arr.length; i++) {
+					select.appendChild(arr[i]);
+				}
+			};
+			
+			// 按钮3绑定事件
+			my$('btn3').onclick = function () {
+				var arr = [];
+				// 将选中的元素添加到数组中
+				for (var i = 0; i < select.children.length; i++) {
+					var option = select.children[i];
+					if (option.selected) {
+						arr.push(option);
+						option.selected = false;
+					}
+				}
+				
+				// 将数组中元素移动
+				for (var i = 0; i < arr.length; i++) {
+					all.appendChild(arr[i]);
+				}
+			};
+			
+			// 按钮4绑定事件
+			my$('btn4').onclick = function () {
+				var len = select.children.length;
+				for (var i = 0; i < len; i++) {
+					var option = select.children[0];
+					all.appendChild(option);
+				}
+			};
+			
+		</script>
+	</body>
+</html>
