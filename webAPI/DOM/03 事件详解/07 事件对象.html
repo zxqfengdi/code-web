@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin: 100px;
+				margin-top: 200px;
+			}
+			img {
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<img src="images/tianshi.gif" alt="" class="hidden" id="image">
+		
+		<script>
+			
+			
+			var box = document.getElementById('box');
+			
+			box.onclick = function (e) {
+				e = e || window.event;
+				
+				// 鼠标相对于浏览器可视区域左上角的坐标
+				console.log(e.clientX);
+				console.log(e.clientY);
+				
+				// 鼠标相对于整个页面页面的绝对坐标(兼容性问题：IE9之后支持)
+				console.log(e.pageX);
+				console.log(e.pageY);
+			};
+			
+			
+			// 鼠标位置案例:跟着鼠标走的图片
+			var img = document.getElementById('image');
+			// 鼠标移动事件
+			document.onmousemove = function (e) {
+				e = e || window.event;
+				
+				// 获取鼠标的坐标
+				positionX = e.pageX;
+				positionY = e.pageY;
+				console.log(positionX);
+				console.log(positionY);
+				
+				// 设置图片位置为鼠标位置(加单位)
+				img.style.left = positionX + 'px';
+				img.style.top = positionY + 'px';	
+			}
+		</script>
+	</body>
+</html>

@@ -9,7 +9,7 @@
 		
 		<script src="common.js"></script>
 		<script>
-			// onclick注册事件: 同一对象的同一事件不能注册多个事件处理函数(后面覆盖前面的)
+			// onclick注册事件: 同一对象的同一事件不能注册多个事件处理函数(后面覆盖前面的) this指向当前对象(元素作用域)
 			// my$('btn1').onclick = function () {
 			// 	alert('hello world!');
 			// };
@@ -18,7 +18,7 @@
 			// 	alert('hello 中国!');
 			// };
 			
-			// addEventListener(type, listener[, useCapture]):为同一对象的同一事件注册多个处理函数(兼容性问题：IE9及之后支持)
+			// addEventListener(type, listener[, useCapture]):为同一对象的同一事件注册多个处理函数，按照注册的顺序执行 (兼容性问题：IE9及之后支持) this指向当前对象(元素作用域)
 			// type:事件类型的字符串
 			// listenser: 监听器即事件处理函数
 			my$('btn1').addEventListener('click', function () {
@@ -29,7 +29,7 @@
 				alert('第二个事件处理函数！');
 			})
 			
-			// 注册事件兼容性问题 IE 6-10支持:  attachEvent(eventNameWithOn, callback)  非标准方法,只支持IE浏览器
+			// 注册事件兼容性问题 IE 6-10支持:  attachEvent(eventNameWithOn, callback) ，按照注册相反顺序执行 非标准方法,只支持IE浏览器 this指向window(全局作用域)
 			// my$('btn1').attachEvent('onclick', function () {
 			// 	alert('第一个事件处理函数！');
 			// })
@@ -45,7 +45,7 @@
 				} else if (element.attachEvent) {
 					element.attachEvent('on' + eventName, fn)
 				} else {
-					element['on' + eventName] = null;
+					element['on' + eventName] = fn;
 				}
 			}
 		</script>

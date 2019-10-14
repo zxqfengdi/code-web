@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box1 {
+			      width: 300px;
+			      height: 300px;
+			      background-color: red;
+			    }
+			
+			#box2 {
+			  width: 200px;
+			  height: 200px;
+			  background-color: green;
+			}
+			
+			#box3 {
+			  width: 100px;
+			  height: 100px;
+			  background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="http://www.baidu.com" id="link">百度</a>
+		<div id="box1">
+			<div id="box2">
+				<div id="box3"></div>
+			</div>
+		</div>
+		
+		<script src="common.js"></script>
+		<script>
+			var link = my$('link');
+			
+			link.onclick = function (e) {
+				alert('hello world');
+				
+				// 取消默认行为执行
+				// return false;
+				
+				// e.preventDefault(): DOM标准方法 取消默认行为执行
+				// IE老版本使用: e.returnValue = false  取消默认行为执行
+				e.preventDefault();
+			}
+			
+			// 事件冒泡
+			var box1 = my$('box1');
+			var box2 = my$('box2');
+			var box3 = my$('box3');
+			
+			var arr = [box1, box2, box3];
+			
+			for (var i = 0; i < arr.length; i++) {
+				var box = arr[i];
+				
+				box.onclick = function (e) {
+					console.log(this.id);
+					// 阻止冒泡: e.stopPropagation()  propagation--传播
+					e.stopPropagation();
+					
+					// 老版本IE阻止冒泡: e.cancelBubble = true;(非标准)
+				};
+			}
+			
+		</script>
+	</body>
+</html>

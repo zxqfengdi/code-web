@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body {
+				height: 1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// pageX和pageY有兼容性问题,IE9之后才支持
+			
+			// 兼容性处理: 利用clieantX和clientY 加上滚动条滚动的距离进行计算
+			// pageY = clientY + 页面垂直滚动距离
+			// pageX = clientX + 页面水平滚动距离
+			
+			// document.onclick = function () {
+			// 	// 横向滚动距离
+			// 	console.log(document.body.scrollLeft);
+			// 	// 纵向滚动距离
+			// 	console.log(document.body.scrollTop);
+				
+			// 	// documentElement: 文档对象的根元素
+			// 	// 下面方法支持个别浏览器
+			// 	console.log(document.documentElement.scrollLeft);
+			// 	console.log(document.documentElement.scrollTop);
+			// };
+			
+			
+			// 获取页面滚动距离的兼容性处理
+			
+			function getScroll() {
+				var scrollLeft = document.body.scrollLeft || documentElement.scrollLeft;
+				var scrollTop = document.body.scrollTop || documentElement.scrollTop;
+				
+				return {
+					scrollLeft: scrollLeft,
+					scrollTop: scrollTop
+				}
+			}
+			
+			// 获取鼠标在浏览器的位置并处理兼容性
+			
+			function getPage(e) {
+				var pageX = e.pageX || e.clientX + getScroll().scrollLeft;
+				var pageY = e.pageY || e.clientY + getScroll().scrollTop;
+				
+				return {
+					pageX: pageX,
+					pageY: pageY
+				}
+			}
+			
+			document.onclick = function (e) {
+				e = e || window.event;
+				console.log(getPage(e).pageX);
+				console.log(getPage(e).pageY);
+			};
+		</script>
+	</body>
+</html>

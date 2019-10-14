@@ -88,7 +88,7 @@ function addEventListener(element, eventName, fn) {
 	} else if (element.attachEvent) {
 		element.attachEvent('on' + eventName, fn)
 	} else {
-		element['on' + eventName] = null;
+		element['on' + eventName] = fn;
 	}
 }
 
@@ -100,6 +100,30 @@ function removeEventListener(element, eventName, fn) {
 	} else if (element.detachEvent) {
 		element.detachEvent('on' + eventName, fn)
 	} else {
-		element['on' + eventName] = fn;
+		element['on' + eventName] = null;
+	}
+}
+
+// 获取页面滚动距离的兼容性处理
+
+function getScroll() {
+	var scrollLeft = document.body.scrollLeft || documentElement.scrollLeft;
+	var scrollTop = document.body.scrollTop || documentElement.scrollTop;
+	
+	return {
+		scrollLeft: scrollLeft,
+		scrollTop: scrollTop
+	}
+}
+
+// 获取鼠标在浏览器的位置并处理兼容性
+
+function getPage(e) {
+	var pageX = e.pageX || e.clientX + getScroll().scrollLeft;
+	var pageY = e.pageY || e.clientY + getScroll().scrollTop;
+	
+	return {
+		pageX: pageX,
+		pageY: pageY
 	}
 }

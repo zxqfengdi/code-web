@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				height: 1000px;
+			}
+			#box {
+				width: 200px;
+				height: 200px;
+				margin: 100px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script src="common.js"></script>
+		<script>
+			var box = my$('box');
+			
+			box.onclick = function (e) {
+				
+				e = e || window.event;
+				
+				// 获取盒子在页面上的位置
+				console.log(this.offsetLeft);
+				console.log(this.offsetTop);
+				
+				// 获取鼠标在页面上的坐标
+				console.log(getPage(e).pageX);
+				console.log(getPage(e).pageY);
+				
+				// 计算鼠标在当前div中的坐标 = 鼠标在页面的坐标 - 盒子的坐标
+				var x = getPage(e).pageX - this.offsetLeft;
+				var y = getPage(e).pageY - this.offsetTop;
+				
+				console.log(x, y);
+				
+			}
+		</script>
+	</body>
+</html>
