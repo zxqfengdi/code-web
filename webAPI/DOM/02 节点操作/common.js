@@ -80,6 +80,30 @@ function getNextElementSibling(element) {
 	return null;
 }
 
+// 注册事件兼容性处理
+
+function addEventListener(element, eventName, fn) {
+	if (element.addEventListener) {
+		element.addEventListener(eventName, fn)
+	} else if (element.attachEvent) {
+		element.attachEvent('on' + eventName, fn)
+	} else {
+		element['on' + eventName] = fn;
+	}
+}
+
+// 移除事件的兼容性处理
+
+function removeEventListener(element, eventName, fn) {
+	if (element.removeEventListener) {
+		element.removeEventListener(eventName, fn)
+	} else if (element.detachEvent) {
+		element.detachEvent('on' + eventName, fn)
+	} else {
+		element['on' + eventName] = null;
+	}
+}
+
 // 获取页面滚动距离的兼容性处理
 
 function getScroll() {
@@ -101,5 +125,25 @@ function getPage(e) {
 	return {
 		pageX: pageX,
 		pageY: pageY
+	}
+}
+
+// 计算时间间隔
+
+function getInterval(start, end) {
+	var interval = end - start; // 相差的毫秒数
+	var day, hour, minute, second;
+	
+	interval /= 1000;
+	day = Math.round(interval / 60 / 60 / 24);
+	hour = Math.round(interval / 60 / 60 % 24);
+	minute = Math.round(interval / 60 % 60);
+	second = Math.round(interval % 60);
+	
+	return {
+		day: day,
+		hour: hour,
+		minute: minute,
+		second: second
 	}
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			// onload事件: 页面加载完成后执行
+			// 页面加载完成: 页面上的所有元素创建完成,并且引用的外部资源(js, css， 图片)下载完毕
+			// window.onload此处可省略window.直接写为onload即可
+			
+			window.onload = function () {
+				var box = document.getElementById('box');
+				console.log(box);
+			};
+			
+			// onload还可以用于元素上,用来当元素加载完成后执行(为元素添加onload属性)
+			// <img src="" alt="" onload="alert('Image loaded')">
+			
+			// onunload事件: 页面卸载完成后执行
+			onunload = function () {
+				// onunload: 所有对话框无法使用,页面卸载时window对象被冻结,因此其对话框方法不能执行
+				// alert('欢迎下次再来！');
+				console.log('bye bye!');
+			}
+			// F5刷新页面: 卸载页面 重新加载页面
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+		
+		<script>	
+			// HTML文档从上往下加载,之前将script标签写在body结束之前,保证页面加载完成
+			// var box = document.getElementById('box');
+			// console.log(box);
+		</script>
+	</body>
+</html>

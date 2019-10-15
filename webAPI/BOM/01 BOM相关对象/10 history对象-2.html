@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>second</h1>
+		<a href="09 history对象.html">first</a>
+		<input type="button" value="后退" id="btn">
+		
+		<script>
+			var btn = document.getElementById('btn');
+			btn.onclick = function () {
+				// history对象: 是window对象的一个属性(window.history)
+				// histiry.back()  后退
+				history.go(-1);
+			};
+		</script>
+	</body>
+</html>

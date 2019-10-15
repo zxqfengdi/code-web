@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="跳转" id="btn">
+		
+		<script>
+			// location对象: 是window对象的一个属性, 用来获取或者设置浏览器地址栏的URL
+			console.log(window.location);
+			
+			var btn = document.getElementById('btn');
+			
+			btn.onclick = function () {
+				// 01 location对象的属性
+				
+				// URL组成: scheme://host:port/path?query#fragment
+				// scheme:通信协议  常用的http,ftp,maito等	
+				// host:主机  服务器(计算机)域名系统 (DNS) 主机名或IP地址
+				// port:端口号 整数，可选，省略时使用方案的默认端口，如http的默认端口为80
+				// path:路径 由零或多个'/'符号隔开的字符串，一般用来表示主机上的一个目录或文件地址
+				// query:查询 可选，用于给动态网页传递参数，可有多个参数，用'&'符号隔开，每个参数的名和值用'='符号隔开。例如：name=zs
+				// fragment:信息片断 字符串，锚点.
+				
+				// location.href属性: 当前地址栏的地址
+				// console.log(location.href);
+				// 设置跳转地址
+				// location.href = 'http://www.baidu.com';
+				
+				// 02 location对象的相关方法
+				
+				// location.assign(): 委派(作用：和href作用相同，让页面跳转到指定的页面)
+				location.assign('http://www.baidu.com');
+				
+				// location.replace(): 替换地址栏中的地址,但是不记录历史
+				location.replace('http://www.baidu.com');
+				
+				// location.reload(force): 重新加载链接资源(force参数-强制刷新 true: 强制从服务器获取页面  false: 如果有缓存则从缓存获取页面)
+				location.reload(true);
+			};
+		</script>
+	</body>
+</html>

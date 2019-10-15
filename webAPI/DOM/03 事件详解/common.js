@@ -127,3 +127,23 @@ function getPage(e) {
 		pageY: pageY
 	}
 }
+
+// 计算时间间隔
+
+function getInterval(start, end) {
+	var interval = end - start; // 相差的毫秒数
+	var day, hour, minute, second;
+	
+	interval /= 1000;
+	day = Math.round(interval / 60 / 60 / 24);
+	hour = Math.round(interval / 60 / 60 % 24);
+	minute = Math.round(interval / 60 % 60);
+	second = Math.round(interval % 60);
+	
+	return {
+		day: day,
+		hour: hour,
+		minute: minute,
+		second: second
+	}
+}

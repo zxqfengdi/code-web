@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="txt">
+		
+		<script src="common.js"></script>
+		<script>
+			
+			// 键盘事件
+			// keydown 键盘按下 keyup 键盘弹起
+			var txt = my$('txt');
+			// 触发keydown时按下的键还没有输入到文本框, keyup时按下的键已输入文本框
+			txt.onkeydown = function (e) {
+				// 判断键盘按钮的按钮是否为数字
+				e = e || window.event;
+				
+				// 按下的字符的键盘码(数字：48-57  小键盘数字：96-105)
+				// 按下后退键会删除一个数字 删除键keycode=8
+				// console.log(e.keyCode);
+				if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode !== 8) {
+					// 取消默认行为执行
+					e.preventDefault();
+				}
+			}
+		</script>
+	</body>
+</html>
