@@ -24,37 +24,76 @@
 			var btn = document.getElementById('btn');
 			var box = document.getElementById('box');
 			
+			var timerId = null;
+			
+			// btn.onclick = function () {
+			// 	// 点击按钮盒子向右移动-设置左边偏移量
+			// 	// style只能获取标签内设置的样式属性的值,若没有该属性,获取到的值为空字符串
+			// 	// 样式属性设置的值为非法值,浏览器会过滤掉
+				
+			// 	// 获取盒子当前的位置: offsetLeft offsetTop
+			// 	// box.style.left = box.offsetLeft + 10 + 'px';
+				
+			// 	// 盒子不停向右移动: 循环太快没有动画效果
+			// 	// for (var i = 0; i < 100; i++) {
+			// 	// 	box.style.left = box.offsetLeft + 5 + 'px';
+			// 	// }
+				
+			// 	// 保证页面上只有一个定时器在执行
+			// 	if (timerId) {
+			// 		clearInterval(timerId);
+			// 		timerId = null;
+			// 	}
+				
+			// 	var step = 6,
+			// 		target = 800;
+				
+			// 	// 定时器实现动画(注意：每点击一次产生一个定时器)
+			// 	timerId = setInterval(function () {
+					
+			// 		// 设置盒子停止点
+			// 		if (box.offsetLeft >= target) {
+			// 			// 到达停止点,取消定时器,b并退出函数
+			// 			clearInterval(timerId);
+						
+			// 			// 由于每次移动6像素最终停止位置左边偏移为504px,解决办法:设置左边偏移量
+			// 			box.style.left = target + 'px';
+			// 			return;
+			// 		}
+					
+			// 		box.style.left = box.offsetLeft + step + 'px';
+			// 	}, 30);
+			// };
 			btn.onclick = function () {
-				// 点击按钮盒子向右移动-设置左边偏移量
-				// style只能获取标签内设置的样式属性的值,若没有该属性,获取到的值为空字符串
-				// 样式属性设置的值为非法值,浏览器会过滤掉
+				animate(box, 600);
+			};
+			
+			// 封装为函数
+			function animate(element, target) {
+				// 保证页面上只有一个定时器在执行
+				if (timerId) {
+					clearInterval(timerId);
+					timerId = null;
+				}
 				
-				// 获取盒子当前的位置: offsetLeft offsetTop
-				// box.style.left = box.offsetLeft + 10 + 'px';
+				var step = 6;
 				
-				// 盒子不停向右移动: 循环太快没有动画效果
-				// for (var i = 0; i < 100; i++) {
-				// 	box.style.left = box.offsetLeft + 5 + 'px';
-				// }
-				
-				// 定时器实现动画
-				var timerId = setInterval(function () {
+				// 定时器实现动画(注意：每点击一次产生一个定时器)
+				timerId = setInterval(function () {
 					
 					// 设置盒子停止点
-					if (box.offsetLeft >= 500) {
+					if (element.offsetLeft >= target) {
 						// 到达停止点,取消定时器,b并退出函数
 						clearInterval(timerId);
 						
 						// 由于每次移动6像素最终停止位置左边偏移为504px,解决办法:设置左边偏移量
-						box.style.left = '500px';
-						console.log(box.style.left);
+						element.style.left = target + 'px';
 						return;
 					}
 					
-					box.style.left = box.offsetLeft + 6 + 'px';
-					console.log(box.offsetLeft);
+					element.style.left = element.offsetLeft + step + 'px';
 				}, 30);
-			};
+			}
 		</script>
 	</body>
 </html>

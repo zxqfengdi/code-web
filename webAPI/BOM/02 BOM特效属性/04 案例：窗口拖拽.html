@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+	
+			.nav {
+				height: 30px;
+				background: #036663;
+				border-bottom: 1px solid #369;
+				line-height: 30px;
+				padding-left: 30px;
+			}
+	
+			.nav a {
+				color: #fff;
+				text-align: center;
+				font-size: 14px;
+				text-decoration: none;
+	
+			}
+	
+			.d-box {
+				width: 400px;
+				height: 300px;
+				border: 5px solid #eee;
+				box-shadow: 2px 2px 2px 2px #666;
+				/* 绝对定位:相对于父元素(此处为body) */
+				position: absolute;
+				top: 40%;
+				left: 40%;
+				background-color: white;
+	
+				/* 不让文字被选中 */
+				-webkit-user-select:none;
+				-moz-user-select:none;
+				-ms-user-select:none;
+				user-select:none;
+			}
+	
+			.hd {
+				width: 100%;
+				height: 25px;
+				background-color: #7c9299;
+				border-bottom: 1px solid #369;
+				line-height: 25px;
+				color: white;
+				cursor: move;
+			}
+	
+			#box_close {
+				float: right;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+		    <a href="javascript:;" id="register">注册信息</a>
+		</div>
+		<div class="d-box" id="d_box">
+		    <div class="hd" id="drop">注册信息 (可以拖拽)
+		        <span id="box_close">【关闭】</span>
+		    </div>
+		    <div class="bd"></div>
+		</div>
+		
+		<script src="common.js"></script>
+		<script>
+			// 窗口拖拽: 窗口上鼠标按下不松开移动鼠标窗口跟随移动
+			
+			// 思路: 
+			// 事件一：鼠标按下瞬间可获取鼠标在当前页面的坐标(pageX, pageY)及盒子在页面中的坐标计算出鼠标在盒子中的坐标
+			// 事件二: 鼠标移动时,获取鼠标在页面的坐标减去鼠标在盒子中的坐标可以得出盒子在页面中的坐标,设置其偏移量等于其页面坐标即可
+			
+			var d_box = document.getElementById('d_box');
+			
+			// 鼠标按下事件
+			d_box.onmousedown = function (e) {
+				e = e || window.event;
+				
+				// 计算鼠标在盒子中的坐标
+				var mouseInBoxX = getPage(e).pageX - d_box.offsetLeft;
+				var mouseInBoxY = getPage(e).pageY - d_box.offsetTop;
+				
+				// 此处嵌套鼠标移动事件:因为鼠标按下移动才能移动盒子
+				document.onmousemove = function (e) {
+					e = e || window.event;
+					
+					// 定时器每隔一段时间计算盒子坐标
+					// setInterval(setBoxPosition, 300);
+					
+					// 之前计算过鼠标在盒子中的坐标,让盒子跟随鼠标即让鼠标相对于盒子的占位置不会发生改变
+					// 具体实现:使用移动时鼠标在页面的坐标 - 鼠标在盒子中的坐标 计算出盒子在当前页面的坐标
+					var boxX = getPage(e).pageX - mouseInBoxX;
+					var boxY = getPage(e).pageY - mouseInBoxY;
+					
+					// 此处不可使用offseetLeft offsetTop来设置,这两个为只读属性
+					// 设置盒子的左右偏移为计算出来的坐标即可(绝对定位加偏移量)
+					d_box.style.left = boxX + 'px';
+					d_box.style.top = boxY + 'px';
+					
+				}
+			};
+			
+			// 鼠标弹起移除鼠标移动事件
+			document.onmouseup = function () {
+				document.onmousemove = null;
+			};
+			
+			// 点击关闭,关闭盒子
+			var box_close = document.getElementById('box_close');
+			
+			box_close.onclick = function () {
+				d_box.style.display = 'none';
+			};
+		</script>
+	</body>
+</html>

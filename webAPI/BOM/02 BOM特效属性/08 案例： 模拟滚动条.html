@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.box {
+				width: 300px;
+				height: 500px;
+				border: 1px solid red;
+				margin: 100px;
+				position: relative;
+				overflow: hidden;
+	
+				/* 不让文字被选中 */
+				-webkit-user-select:none;
+				-moz-user-select:none;
+				-ms-user-select:none;
+				user-select:none;
+			}
+			.content {
+				padding: 5px 18px 5px 5px;
+				position: absolute;
+				top: 0;
+				left: 0;
+	
+			}
+			.scroll {
+				width: 18px;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: 0;
+				background-color: #eee;
+			}
+			.bar {
+				height: 100px;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: red;
+				border-radius:  10px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">
+		    <div class="content" id="content">
+		       我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		       我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+		        我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+				我是文字内容，我是文字内容，我是文字内容，
+		    </div>
+		    <div class="scroll" id="scroll">
+		        <div class="bar" id="bar"></div>
+		    </div>
+		</div>
+		
+		<script src="common.js"></script>
+		<script>
+			
+			var box = my$('box');
+			var content = my$('content');
+			var scroll = my$('scroll');
+			var bar = my$('bar');
+			
+			
+			// 根据内容多少计算滚动条高度
+			// 滚动条高度 / scroll高度 = box高度 / 内容高度
+			var barHeight = box.clientHeight * scroll.clientHeight / content.scrollHeight;
+			
+			// 当内容高度大于box的高度在计算滚动条高度,否则没有滚动条
+			var barHeight = 0;
+			
+			if (content.scrollHeight > box.clientHeight) {
+				barHeight = box.clientHeight * scroll.clientHeight / content.scrollHeight;
+			}
+			
+			bar.style.height = barHeight + 'px';
+			// 拖拽滚动条
+			bar.onmousedown = function (e) {
+				e = e || window.event;
+				
+				// 滚动条在scroll中的位置 = 鼠标在页面的位置 - box相对于父元素的偏移 - bar相对于scroll的偏移
+				var barInScroll = getPage(e).pageY - box.offsetTop - bar.offsetTop;
+				
+				// 鼠标移动事件
+				document.onmousemove = function (e) {
+					e = e || window.event;
+					
+					// 移动时滚动条的位置 = 鼠标在页面的位置 - 鼠标在scroll的位置 - box的位置
+					var barPosition = getPage(e).pageY - barInScroll - box.offsetTop;
+					
+					// 滚动条的移动范围
+					barPosition = barPosition < 0 ? 0 : barPosition;
+					barPosition = barPosition > scroll.clientHeight - barHeight ? scroll.clientHeight - barHeight : barPosition;
+					
+					bar.style.top = barPosition + 'px';
+					
+					// 拖拽滚动条内容滚动
+					// 比例关系: 内容向上滚动的距离 / 内容最大滚动的距离 = 滚动条滚动的距离 / 滚动条最大滚动的距离
+					var contentScroll = (content.scrollHeight - box.clientHeight) * barPosition / (scroll.clientHeight - barHeight);
+					content.style.top = - contentScroll + 'px';
+				};		
+			};
+			
+			// 鼠标弹起事件
+			document.onmouseup = function () {
+				document.onmousemove = null;
+			};
+		</script>
+	</body>
+</html>
