@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin: 5px 0px;
+				position: relative;
+			}
+			#box2 {
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="前进" id="btn1">
+		<input type="button" value="返回" id="btn2">
+		<div id="box1"></div>
+		<div id="box2"></div>
+		
+		<script src="common.js"></script>
+		<script>
+			var btn1 = my$('btn1');
+			var btn2 = my$('btn2');
+			var box1 = my$('box1');
+			var box2 = my$('box2');
+			
+			// var timerId= null;
+			
+			btn1.onclick = function () {
+				animate(box1, 800);
+				animate(box2, 800);
+			};
+			
+			btn2.onclick = function () {
+				animate(box1, 400);
+				animate(box2, 400);
+			};
+			
+			// 动画函数封装
+			function animate(element, target) {
+				
+				var step = 6;
+				
+				// 为每个元素元素添加timerId作为其属性(每个元素拥有自己的定时器)
+				if (element.timerId) {
+					clearInterval(element.timerId);
+					element.timerId = null;
+				}
+				
+				element.timerId = setInterval(function () {
+					
+					var current = element.offsetLeft;
+					
+					// 判断如果当前位置 > 目标位置 此时的step为负值
+					if (current > target) {
+						step = - Math.abs(step);
+					}
+					
+					// 当移动距离大于目标时取消定时器
+					if (Math.abs(current - target) <= Math.abs(step)) {
+						clearInterval(element.timerId);
+						element.style.left = target + 'px';
+						return;
+					}
+					
+					current += step;
+					element.style.left = current + 'px';
+				}, 30)
+			}
+		</script>
+	</body>
+</html>

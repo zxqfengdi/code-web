@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/* css初始化 */
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ol,
+			ul {
+				list-style: none;
+			}
+			
+			.all {
+				width: 500px;
+				height: 200px;
+				padding: 5px;
+				border: 1px solid #ccc;
+				margin: 100px auto;
+				position: relative;
+			}
+			
+			.screen {
+				width: 500px;
+				height: 200px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.screen ul {
+				width: 3000px;
+				position: absolute;
+				/* 清除li元素浮动高度为0 */
+				overflow: hidden;
+			}
+			
+			.screen ul li {
+				width: 500px;
+				height: 200px;
+				float: left;
+			}
+			
+			.screen ol {
+				position: absolute;
+				right: 15px;
+				bottom: 15px;
+			}
+			
+			.screen ol li {
+				float: left;
+				width: 20px;
+				height: 20px;
+				border: 1px solid #ccc;
+				margin-right: 10px;
+				background-color: #fff;
+				text-align: center;
+				cursor: pointer;
+			}
+			
+			.screen ol li.current {
+				background-color: skyblue;
+			}
+			
+			#arr {
+				display: none;
+				z-index: 1000;
+	
+			}
+			
+			#arr span {
+				display: block;
+				width: 40px;
+				border: 1px solid #fff;
+				opacity: 0.5;
+				line-height: 40px;
+				background-color: rgba(0, 0, 0, 0.3);
+				text-align: center;
+				color: #fff;
+				font-weight: 700;
+				font-size: 26px;
+				position: absolute;
+				top: 50%;
+				margin-top: -20px;
+				cursor: pointer;
+			}
+			
+			#left {
+				left: 5px;
+			}
+			
+			#right {
+				right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all" id="box">
+		    <div class="screen">
+		        <ul>
+		            <li><img src="images/wf1.jpg" width="500" height="200"/></li>
+		            <li><img src="images/wf2.jpg" width="500" height="200"/></li>
+		            <li><img src="images/wf3.jpg" width="500" height="200"/></li>
+		            <li><img src="images/wf4.jpg" width="500" height="200"/></li>
+		            <li><img src="images/wf5.jpg" width="500" height="200"/></li>
+		        </ul>
+		        <ol>
+					<!-- 根据ul内部图片数动态生成li元素 -->
+
+				</ol>
+		    </div>
+		    <div id="arr">
+				<span id="left">&lt;</span>
+				<span id="right">&gt;</span>
+			</div>
+		</div>
+		
+		<script src="common.js"></script>
+		<script src="animate.js"></script>
+		<script>
+			// 01 动态生成序号
+			var box = my$('box');
+			var screen = box.children[0];
+			var ul = screen.children[0];
+			var ol = screen.children[1];
+			
+			var arr = my$('arr');
+			var arrLeft = my$('left');
+			var arrRight = my$('right');
+			
+			var imageWidth = screen.offsetWidth;
+			var imgCount = ul.children.length;
+			
+			for (var i = 0; i < imgCount; i++) {
+				var li = document.createElement('li');
+				ol.appendChild(li);
+				setInnerText(li, i + 1);
+				
+				// 给每个li定义自定义索引属性
+				li.setAttribute('index', i);
+				
+				// 02 点击序号动画方式切换图片
+				li.onclick = liClick;	
+			}
+			
+			// 序号点击函数
+			function liClick() {
+				// 当前点击序号高亮显示,其他取消高亮显示
+				for (var i = 0; i < ol.children.length; i++) {
+					var li = ol.children[i];
+					
+					li.className = '';
+				}
+				
+				this.className = 'current';
+				
+				// 切换图片(让整个ul向左移动一个图片的距离)
+				// 获取当前点击的li的索引
+				var liIndex = parseInt(this.getAttribute('index'));
+				
+				animate(ul, -liIndex * imageWidth);
+				
+				index = liIndex;
+			}
+			
+			// 序号1高亮显示
+			ol.children[0].className = 'current';
+			
+			// 03 鼠标放到盒子上显示箭头
+			box.onmouseenter = function () {
+				arr.style.display = 'block';
+			};
+			box.onmouseleave = function () {
+				arr.style.display = '';
+			};
+			// 04 实现上一张与下一张
+			var index = 0;
+			
+			arrRight.onclick = function () {
+				// 判断是否为克隆的第一张
+				if (index === imgCount) {
+					ul.style.left = '0px';
+					index = 0;
+				}
+				
+				index++;
+				
+				if (index < imgCount) {
+					ol.children[index].click();  // 代码触发事件
+				} else {
+					animate(ul, -index * imageWidth);
+					
+					// 取消所有序号的高亮显示,第一个高亮
+					for (var i = 0; i < ol.children.length; i++) {
+						var li = ol.children[i];
+						li.className = '';
+					}
+					ol.children[0].className = 'current';
+				}
+			}
+			
+			arrLeft.onclick = function () {
+				// 判断是否为第一张
+				if (index === 0) {
+					index = imgCount;
+					ul.style.left = -index * imageWidth + 'px';
+				}
+				
+				index--;
+				
+				ol.children[index].click();
+				
+				// if (index > 0) {
+				// 	// animate(ul, -index * imageWidth)
+				// 	ol.children[index].click();
+					
+				// }
+			}
+			
+			// 无缝滚动
+			// 获取第一张图片
+			var firstLi = ul.children[0];
+			
+			// 克隆li(参数为true会复制内部内容)
+			var cloneLi = firstLi.cloneNode(true);
+			ul.appendChild(cloneLi)
+			
+			// 自动切换图片
+		</script>
+	</body>
+</html>
