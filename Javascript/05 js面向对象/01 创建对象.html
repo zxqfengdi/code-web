@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 1 Object()构造函数创建对象
+			var student1 = new Object();
+			student1.name = 'fengdi';
+			student1.subject = '数学';
+			student1.score = 95;
+			
+			student1.print = function () {
+				console.log(student1.name, student1.score);
+			};
+			
+			console.log(student1);
+			student1.print();
+			
+			
+			// 2 工厂函数
+			function CreateStudent(name, subject, score) {
+				var student = new Object();
+				student.name = name
+				student.subject = subject;
+				student.score = score;
+				
+				student.print = function () {
+					console.log(student.name, student.score);
+				};
+				
+				return student;  // 返回对象
+			}
+			
+			// 根据工厂方法创建对象
+			var student = CreateStudent('张三', '语文', 75);
+			console.log(student);
+			console.log(student.constructor);
+			student.print();
+			
+			// 自定义构造函数
+			function Student(name, subject, score) {
+				this.name = name;
+				this.subject = subject;
+				this.score = score;
+				
+				this.print = function () {
+					console.log(this.name, this.score);
+				};
+			}
+			
+			// 创建对象
+			var student = new Student('yuxi', '英语', 89);
+			student.print();
+			
+			// 获取对象的具体类型
+			console.log(student.constructor);
+			
+			// 一般使用instanceof判断对象是否为某个构造函数创建出来的
+			console.log(student instanceof Student);
+		</script>
+	</body>
+</html>
