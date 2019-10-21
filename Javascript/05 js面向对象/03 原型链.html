@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			console.dir(Person);  // 构造函数拥有prototype属性
+			console.log(Person.prototype);  // 构造函数的prototype属性是一个对象:原型对象(内部constructor属性指向所属的构造函数)
+			
+			// 创建实例对象
+			var person1 = new Person('黎明', 15, '男');
+			
+			console.dir(person1);  // 实例对象拥有__proto__属性
+			console.log(person1.__proto__);  // 实例对象的__proto__属性是一个对象指针,指向构造函数中的原型对象
+			
+			// 构造函数原型对象的原型对象
+			var o = person1.__proto__;  // 构造函数的原型对象
+			var o1 = o.__proto__;  // 原型对象的原型对象
+			console.dir(o1);
+			
+			// 读写原型对象成员
+			// 读取属性
+			
+			var person2 = new Person('小明', 15, '男');
+			Person.prototype.score = 90;  // 构造函数原型对象增加score属性(实例对象沿着原型链查找访问)
+			console.log(person2.score);
+			
+			// 值类型修改(实例对象.值类型成员 = xx)
+			person2.score = 85;
+			console.log(person2.score);  // 值类型修改时不会查找原型链(即自身没有该属性则自动添加该属性)
+			console.dir(person2);  // 打印可以查出自身增加了score属性
+			console.dir(Person.prototype);  // 构造函数中score属性依旧存在且未修改
+			
+			// 引用类型修改(实例对象.引用类型成员 = xx)
+			// 构造函数原型对象增添print方法
+			Person.prototype.print = function () {
+				console.log('我是原型对象的print方法');
+			};
+			
+			console.dir(person2);
+			console.dir(Person.prototype);
+			
+			person2.print();
+			
+			// 修改print方法(引用类型修改和值类型一样，不会查找原型链；此处自身没有print方法则自身添加print方法)
+			person2.print = function () {
+				console.log('我是自身的print方法');
+			}
+			
+			person2.print();  // 访问时自身就拥有该方法,则调用自身print方法
+			
+			
+			// 复杂类型修改(实例对象.成员.xx = xx)
+			Person.prototype.honor = {
+				num1: 'test01',
+				num2: 'test02'
+			}
+			
+			// 读取honor属性:查找原型链
+			console.dir(person2.__proto__);
+			console.dir(Person.prototype);
+			
+			console.log(person2.honor);
+			
+			// 修改属性
+			person2.honor.num1 = 'test03';  // 修改时查找自身,自身找到则修改；自身未找到查找原型链修改;最后未找到报错
+			console.log(person2.honor);
+			console.log(person2.__proto__);
+		</script>
+	</body>
+</html>

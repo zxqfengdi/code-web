@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 构造函数的问题: 同一函数均会占用内存
+			function Student(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+				
+				this.sayHai = sayHai;  // 此时多个对象的sayHai属性指向同一个命名函数
+			}
+			
+			// 函数定义在外部
+			function sayHai() {
+				console.log('hello ' + this.name);
+			}
+			
+			// 创建对象
+			var stu1 = new Student('李磊', 18, '男');
+			var stu2 = new Student('王小二', 20, '男');
+			
+			stu1.sayHai();
+			stu2.sayHai();
+			console.log(stu1.sayHai === stu2.sayHai);  // 指向同一对象
+			
+			
+			// 原型:每个对象都有一个属性prototype: 指向一个对象---> 原型/原型对象
+			function Person(name, age, sex) {
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			
+			console.dir(Person);
+			console.log(Person.prototype);
+			
+			// 使用构造函数的原型属性动态地增加方法
+			Person.prototype.sayHai = function () {
+				console.log('hello ' + this.name);
+			};
+			
+			// 所有实例对象均可访问构造函数原型对象中的属性和方法
+			var person1 = new Person('fengdi', 25, '男');
+			var person2 = new Person('yuxi', 20, '女');
+			
+			person1.sayHai();
+			person2.sayHai();
+			
+			console.log(person1.sayHai === person2.sayHai);  // 同一指向
+			console.dir(person1);
+		</script>
+	</body>
+</html>

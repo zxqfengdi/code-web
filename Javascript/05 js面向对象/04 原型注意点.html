@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 原型语法
+			
+			// 一般,对象的属性在构造函数内设置
+			function Student(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			
+			// 对象的方法在构造函数的原型对象内设置(新增, 添加多个方法时重复较多)
+			// Student.prototype.sayHai = function () {
+			// 	console.log('hello');
+			// };
+			
+			// Student.prototype.eat = function () {
+			// 	console.log('eat');
+			// };
+			
+			// 推荐语法:将构造函数的原型对象重定向到一个对象,将添加的方法作为对象的成员
+			// Student.prototype = {
+			// 	sayHai: function () {
+			// 		console.log('hello');
+			// 	},
+			// 	eat: function () {
+			// 		console.log('eat');
+			// 	}
+			// }
+			
+			// console.log(Student.prototype);
+			
+			// 重新定向后constructor属性的指向发生改变(直接将constructor属性添加到对象中)
+			Student.prototype = {
+				constructor: Student,
+				sayHai: function () {
+					console.log('hello');
+				},
+				eat: function () {
+					console.log('eat');
+				}
+			}
+			
+			console.log(Student.prototype);
+			
+			student1 = new Student('liming', 15);
+			console.log(student1.constructor);
+		</script>
+	</body>
+</html>

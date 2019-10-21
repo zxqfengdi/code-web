@@ -1,0 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	width: 800px;
+	height: 600px;
+	background-color: rgba(0, 0, 0, 0.2);
+	margin: 100px auto;
+	/* 内部小方块相对于父元素定位:子绝父相 */
+	position: relative;
+}
