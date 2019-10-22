@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var parent = {
+				name: '李明',
+				money: '100万',
+				cars: ['别克', '宝马'],
+				play: function () {
+					console.log("打高尔夫");
+				}
+			}
+
+			var child = {
+				name: '李小明'
+			}
+
+			// 将一个对象的成员复制给另一个成员
+			// for (key in parent) {
+			// 	// 跳过不继承的属性
+			// 	if (child[key]) {
+			// 		continue
+			// 	}
+			// 	child[key] = parent[key]
+			// }
+
+			// 封装为函数
+			function extend(parentObj, childObj) {
+				for (key in parentObj) {
+					if (childObj[key]) {
+						continue
+					}
+					childObj[key] = parentObj[key];
+				}
+			}
+
+			// 函数调用
+			extend(parent, child);
+			console.log(child);
+		</script>
+	</body>
+</html>
