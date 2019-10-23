@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 继承:类型和类型之间的关系
+			
+			// 学生类型
+			function Student() {
+				// this.name = 'zs';
+				// this.age = 18;
+				// this.sex = '男';
+				
+				this.score = 100;
+			}
+			
+			// 老师类型
+			function Teacher() {
+				// this.name = 'ls';
+				// this.age = 21;
+				// this.sex = '女';
+				
+				this.salary = 3000;
+			}
+			
+			// 抽象出父类(子类中相同属性抽象到父类中，只保留独有属性)
+			function Person() {
+				this.name = 'ls';
+				this.age = 21;
+				this.sex = '女';
+			}
+			
+			Student.prototype = new Person()  // 修改Student的原型对象
+			Student.prototype.constructor = Student;
+			
+			// 原型继承:无法设置构造函数的参数
+			var s1 = new Student();
+			console.dir(s1);
+			console.log(s1.constructor);
+			console.log(s1.name);
+		</script>
+	</body>
+</html>
