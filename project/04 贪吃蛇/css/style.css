@@ -1,0 +1,7 @@
+#map {
+    width: 1000px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 100px auto;
+    position: relative;
+}

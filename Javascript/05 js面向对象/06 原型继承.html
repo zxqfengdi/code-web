@@ -8,39 +8,40 @@
 		<script>
 			// 继承:类型和类型之间的关系
 			
-			// 学生类型
-			function Student() {
-				// this.name = 'zs';
-				// this.age = 18;
-				// this.sex = '男';
-				
-				this.score = 100;
-			}
-			
-			// 老师类型
-			function Teacher() {
-				// this.name = 'ls';
-				// this.age = 21;
-				// this.sex = '女';
-				
-				this.salary = 3000;
-			}
-			
-			// 抽象出父类(子类中相同属性抽象到父类中，只保留独有属性)
+			// 父类
 			function Person() {
-				this.name = 'ls';
-				this.age = 21;
-				this.sex = '女';
-			}
-			
-			Student.prototype = new Person()  // 修改Student的原型对象
-			Student.prototype.constructor = Student;
-			
-			// 原型继承:无法设置构造函数的参数
-			var s1 = new Student();
-			console.dir(s1);
-			console.log(s1.constructor);
-			console.log(s1.name);
+				this.name = 'zs';
+				this.age = 25;
+				this.sex = '男';
+
+				this.info = function () {
+					console.log('hello world!');
+                }
+            }
+
+            // 子类
+			function Student() {
+				this.score = 100;
+            }
+
+            // 构造函数创建对象
+			// student = new Student();
+			// console.dir(student);
+			// console.log(student.constructor);
+			// console.log(student.score);
+			// console.log(student.name);  // 内部没有此属性访问不到
+
+
+			// 改变构造函数的原型对象
+			Student.prototype = new Person();
+			Student.prototype.constructor = Student;  // 一定要同时修改原型对象内部的constructor属性
+            student = new Student();
+            console.dir(student);  // 此时student对象的__proto__属性指向的原型对象已经修改为Person
+			console.log(student.constructor);
+            console.log(student.score);
+			console.log(student.name, student.age);  // 此时本身不具有的属性去__proto__指向的原型对象内寻找即去Person中寻找
+
+			// 原型继承缺点：无法设置构造函数的参数
 		</script>
 	</body>
 </html>
