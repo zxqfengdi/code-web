@@ -24,6 +24,7 @@
             // 蛇节渲染
             var object = this.body[i];
 
+            // 创建蛇节对象添加到页面并设置样式
             var div = document.createElement('div');
             map.appendChild(div);
 
